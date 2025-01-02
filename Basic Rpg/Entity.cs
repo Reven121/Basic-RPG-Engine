@@ -11,12 +11,14 @@ namespace Basic_Rpg
         public int healthPoints;
         public string entityName;
         public int attack;
+        public bool isDefending;
 
-        public Entity(int healthPoints, string entityName, int attack)
+        public Entity(int healthPoints, string entityName, int attack, bool isDefending)
         {
             this.healthPoints = healthPoints;
             this.entityName = entityName;
             this.attack = attack;
+            this.isDefending = isDefending;
         }
 
         public virtual void TakeDamage(int damage)
@@ -26,12 +28,26 @@ namespace Basic_Rpg
 
         public virtual void Attack(Entity target)
         {
-            target.TakeDamage(attack);
+            if (target.isDefending)
+            {
+                target.TakeDamage(attack / 2);
+            }
+            else
+            {
+                target.TakeDamage(attack);
+            }
+
+            target.isDefending = false;
         }
 
         public bool IsDead()
         {
             return healthPoints <= 0;
+        }
+
+        public virtual void Defend(Entity target)
+        {
+            target.isDefending = true;
         }
     }
 }

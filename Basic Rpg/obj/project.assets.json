@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Basic Rpg\\Basic Rpg\\Basic Rpg.csproj",
+      "projectUniqueName": "D:\\Basic-RPG-Engine\\Basic Rpg\\Basic Rpg.csproj",
       "projectName": "Basic Rpg",
-      "projectPath": "D:\\Basic Rpg\\Basic Rpg\\Basic Rpg.csproj",
+      "projectPath": "D:\\Basic-RPG-Engine\\Basic Rpg\\Basic Rpg.csproj",
       "packagesPath": "C:\\Users\\josep\\.nuget\\packages\\",
-      "outputPath": "D:\\Basic Rpg\\Basic Rpg\\obj\\",
+      "outputPath": "D:\\Basic-RPG-Engine\\Basic Rpg\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\josep\\AppData\\Roaming\\NuGet\\NuGet.Config",

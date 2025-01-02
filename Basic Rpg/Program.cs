@@ -3,17 +3,29 @@ using Basic_Rpg;
 
 Console.WriteLine("Hello, World!");
 
-Player player = new Player(1000, "frank", 50);
-Enemy enemy = new Enemy(150, "bob", 5);
+Player player = new Player(1000, "frank", 50, false);
+Enemy enemy = new Enemy(150, "bob", 5, false);
 
 while (!enemy.IsDead() && !player.IsDead())
 {
     Console.WriteLine($"{player.entityName} HP: {player.healthPoints}, {enemy.entityName} HP: {enemy.healthPoints}");
     //player turnl
-    Console.WriteLine("Press Enter To Attack");
-    Console.ReadLine();
-    player.Attack(enemy);
-    Console.WriteLine($"{player.entityName} did {player.attack} to {enemy.entityName}");
+    Console.WriteLine("Type A To Attack Or D To Defend.");
+    string user_input = Console.ReadLine();
+    if (user_input == "a")
+    {
+        player.Attack(enemy);
+        Console.WriteLine($"{player.entityName} did {player.attack} to {enemy.entityName}");
+    }
+    else if(user_input == "d")
+    {
+        player.Defend(player);
+    }
+    else
+    {
+        Console.WriteLine("Invalid Command");
+        continue;
+    }
 
     //enemy turn
     enemy.Attack(player);
