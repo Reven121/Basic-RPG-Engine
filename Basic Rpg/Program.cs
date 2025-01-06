@@ -15,7 +15,7 @@ while (!enemy.IsDead() && !player.IsDead())
     if (user_input == "a")
     {
         player.Attack(enemy);
-        Console.WriteLine($"{player.entityName} did {player.attack} to {enemy.entityName}");
+        Console.WriteLine($"{player.entityName} did {player.damageDone} to {enemy.entityName}");
     }
     else if(user_input == "d")
     {
@@ -29,7 +29,7 @@ while (!enemy.IsDead() && !player.IsDead())
 
     //enemy turn
     enemy.Attack(player);
-    Console.WriteLine($"{enemy.entityName} did {enemy.attack} to {player.entityName}");
+    Console.WriteLine($"{enemy.entityName} did {enemy.damageDone} to {player.entityName}");
     
 }
 

@@ -30,17 +30,24 @@ namespace Basic_Rpg
             healthPoints = healthPoints - damage;
         }
 
+        public virtual int DamageDone(int damage)
+        {
+            return damageDone = damage;
+        }
+
         public virtual void Attack(Entity target)
         {
             if (target.isDefending)
             {
                 damageDone = attack / 2;
                 target.TakeDamage(damageDone);
+                DamageDone(damageDone);
             }
             else
             {
                 damageDone = attack;
                 target.TakeDamage(damageDone);
+                DamageDone(damageDone);
             }
 
             target.isDefending = false;

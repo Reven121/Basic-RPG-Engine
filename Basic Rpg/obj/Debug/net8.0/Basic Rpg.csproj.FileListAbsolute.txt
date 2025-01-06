@@ -20,3 +20,10 @@ D:\Basic-RPG-Engine\Basic Rpg\obj\Debug\net8.0\Basic Rpg.sourcelink.json
 D:\Basic-RPG-Engine\Basic Rpg\obj\Debug\net8.0\Basic Rpg.dll
 D:\Basic-RPG-Engine\Basic Rpg\obj\Debug\net8.0\refint\Basic Rpg.dll
 D:\Basic-RPG-Engine\Basic Rpg\obj\Debug\net8.0\Basic Rpg.pdb
+D:\Basic-RPG-Engine\Basic Rpg\bin\Debug\net8.0\Basic Rpg.exe
+D:\Basic-RPG-Engine\Basic Rpg\bin\Debug\net8.0\Basic Rpg.deps.json
+D:\Basic-RPG-Engine\Basic Rpg\bin\Debug\net8.0\Basic Rpg.runtimeconfig.json
+D:\Basic-RPG-Engine\Basic Rpg\bin\Debug\net8.0\Basic Rpg.dll
+D:\Basic-RPG-Engine\Basic Rpg\bin\Debug\net8.0\Basic Rpg.pdb
+D:\Basic-RPG-Engine\Basic Rpg\obj\Debug\net8.0\Basic Rpg.genruntimeconfig.cache
+D:\Basic-RPG-Engine\Basic Rpg\obj\Debug\net8.0\ref\Basic Rpg.dll
