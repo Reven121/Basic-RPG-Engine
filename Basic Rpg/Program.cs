@@ -3,8 +3,8 @@ using Basic_Rpg;
 
 Console.WriteLine("Hello, World!");
 
-Player player = new Player(1000, "frank", 50, false);
-Enemy enemy = new Enemy(150, "bob", 5, false);
+Player player = new Player(1000, "frank", 50, false, false);
+Enemy enemy = new Enemy(150, "bob", 5, false, false);
 
 while (!enemy.IsDead() && !player.IsDead())
 {

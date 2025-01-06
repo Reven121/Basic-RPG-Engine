@@ -8,7 +8,7 @@ namespace Basic_Rpg
 {
     internal class Enemy: Entity
     {
-        public Enemy(int healthpoint, string name, int attack, bool isDefending) : base(healthpoint, name, attack, isDefending) { }
+        public Enemy(int healthpoint, string name, int attack, bool isDefending, bool isAttackUp) : base(healthpoint, name, attack, isDefending, isAttackUp) { }
 
 
     }

@@ -1,0 +1,27 @@
+Elements of Rpg combat system
+
+Anything with (+) next to it effects the timeline system in some way
+
+Basic -
+-Standard Weapon Attack (+)
+-Skills (+)
+-Items? (+)
+-Defend (+)
+-Escape
+
+Middle -
+-Enemy Aggro/ taunting(?)
+-Single target vs AOE (+)
+-Seperating each turn for each actor (+)
+-Buffs/Debuffs (+ due to possible changes to speed stat)
+-Status Ailments - Types like Turn Effecting eg. paralysis or Sleep (+), DoT eg. poision, burn.
+-Luck/Crit rate/ Crit damage
+-Ultimates? (+)
+-Skill Points or Cooldowns? (+)
+-MP and SP seperate? Sp regen on attacks and MP has to use items? 
+
+Complex -
+-Swap In or Cut In Attacks (+)
+-Timeline and timeline manipulation(pushing back and pulling forwards for allies, enemies and skills/summons) (+)
+-Adding actors like delayed attacks and summons to timeline (+)
+
