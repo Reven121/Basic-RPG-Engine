@@ -3,12 +3,12 @@ using Basic_Rpg;
 
 Console.WriteLine("Hello, World!");
 
-Player player = new Player(1000, "frank", 50, false, false);
-Enemy enemy = new Enemy(150, "bob", 5, false, false);
+Player player = new Player(1000, "frank", 5, false, 1, 20, 4, 20, 0);
+Enemy enemy = new Enemy(150, "bob", 6, false, 2, 10, 5, 10, 0);
 
 while (!enemy.IsDead() && !player.IsDead())
 {
-    Console.WriteLine($"{player.entityName} HP: {player.healthPoints}, {enemy.entityName} HP: {enemy.healthPoints}");
+    Console.WriteLine($"{player.entityName} HP: {player.healthPoints} MP {player.currentMP} SP {player.currentSP}, {enemy.entityName} HP: {enemy.healthPoints}");
     //player turnl
     Console.WriteLine("Type A To Attack Or D To Defend.");
     string user_input = Console.ReadLine();
