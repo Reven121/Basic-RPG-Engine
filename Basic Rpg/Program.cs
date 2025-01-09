@@ -18,8 +18,6 @@ int? ReadIntFromConsole()  {
     }
 }
 
-Console.WriteLine("Hello, World!");
-
 // We create a couple of items here and add them to the inventory
 SimpleItem healingPotion = new SimpleItem("Soothing Balm", "heal 50 HP", 50, 0);
 SimpleItem attackPotion = new SimpleItem("Stim Pack", "increase attack by 10 AP  at the cost of 50 HP", -50, 10);
