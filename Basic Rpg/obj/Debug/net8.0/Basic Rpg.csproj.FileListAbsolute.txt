@@ -1,0 +1,22 @@
+D:\Basic Rpg\Basic Rpg\bin\Debug\net8.0\Basic Rpg.exe
+D:\Basic Rpg\Basic Rpg\bin\Debug\net8.0\Basic Rpg.deps.json
+D:\Basic Rpg\Basic Rpg\bin\Debug\net8.0\Basic Rpg.runtimeconfig.json
+D:\Basic Rpg\Basic Rpg\bin\Debug\net8.0\Basic Rpg.dll
+D:\Basic Rpg\Basic Rpg\bin\Debug\net8.0\Basic Rpg.pdb
+D:\Basic Rpg\Basic Rpg\obj\Debug\net8.0\Basic Rpg.GeneratedMSBuildEditorConfig.editorconfig
+D:\Basic Rpg\Basic Rpg\obj\Debug\net8.0\Basic Rpg.AssemblyInfoInputs.cache
+D:\Basic Rpg\Basic Rpg\obj\Debug\net8.0\Basic Rpg.AssemblyInfo.cs
+D:\Basic Rpg\Basic Rpg\obj\Debug\net8.0\Basic Rpg.csproj.CoreCompileInputs.cache
+D:\Basic Rpg\Basic Rpg\obj\Debug\net8.0\Basic Rpg.dll
+D:\Basic Rpg\Basic Rpg\obj\Debug\net8.0\refint\Basic Rpg.dll
+D:\Basic Rpg\Basic Rpg\obj\Debug\net8.0\Basic Rpg.pdb
+D:\Basic Rpg\Basic Rpg\obj\Debug\net8.0\Basic Rpg.genruntimeconfig.cache
+D:\Basic Rpg\Basic Rpg\obj\Debug\net8.0\ref\Basic Rpg.dll
+D:\Basic-RPG-Engine\Basic Rpg\obj\Debug\net8.0\Basic Rpg.GeneratedMSBuildEditorConfig.editorconfig
+D:\Basic-RPG-Engine\Basic Rpg\obj\Debug\net8.0\Basic Rpg.AssemblyInfoInputs.cache
+D:\Basic-RPG-Engine\Basic Rpg\obj\Debug\net8.0\Basic Rpg.AssemblyInfo.cs
+D:\Basic-RPG-Engine\Basic Rpg\obj\Debug\net8.0\Basic Rpg.csproj.CoreCompileInputs.cache
+D:\Basic-RPG-Engine\Basic Rpg\obj\Debug\net8.0\Basic Rpg.sourcelink.json
+D:\Basic-RPG-Engine\Basic Rpg\obj\Debug\net8.0\Basic Rpg.dll
+D:\Basic-RPG-Engine\Basic Rpg\obj\Debug\net8.0\refint\Basic Rpg.dll
+D:\Basic-RPG-Engine\Basic Rpg\obj\Debug\net8.0\Basic Rpg.pdb
