@@ -8,7 +8,7 @@ namespace Basic_Rpg
 {
     internal class Player : Entity
     {
-        public Player(int healthpoint, string name, int attack, bool isDefending) : base(healthpoint, name, attack, isDefending) { }
+        public Player(int healthpoint, string name, int attack, bool isDefending, List<Item>? inventory = null) : base(healthpoint, name, attack, isDefending, inventory) { }
 
 
     }
