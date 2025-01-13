@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,6 +28,20 @@ namespace Basic_Rpg
         public int damageDone;
 
         public Entity(int healthPoints, string entityName, int attack, bool isDefending, int defence, int maxMP, int maxSP, int currentMP, int currentSP)
+
+        public List<Item> inventory;
+
+        public Entity(
+                int healthPoints,
+                string entityName,
+                int attack,
+                bool isDefending,
+                List<Item>? inventory = null,
+                int defence, 
+                int maxMP,
+                int maxSP,
+                int currentMP,
+                int currentSP)
         {
             this.healthPoints = healthPoints;
             this.entityName = entityName;
@@ -38,11 +52,18 @@ namespace Basic_Rpg
             this.maxSP = maxSP;
             this.currentMP = currentMP;
             this.currentSP = currentSP;
+
+            if (inventory == null) {
+                this.inventory = new List<Item>();
+            }
+            else {
+                this.inventory = inventory;
+            }
         }
 
         public virtual void TakeDamage(int damage)
         {
-            healthPoints = healthPoints - damage;
+            ModifyHealthPoints(-damage);
         }
 
         public virtual int DamageDone(int damage)
@@ -98,9 +119,45 @@ namespace Basic_Rpg
             target.isDefending = true;
         }
 
-        public virtual void Skill()
-        { 
-                    
+        public Item? UseItem(int index) {
+            // Check if the index points to an item within the inventory
+            // if it's out of the range of the inventory, return null
+            if (index >= inventory.Count) {
+                return null;
+            }
+            
+            // Get (a reference to) the item we wish to use
+            Item item = inventory[index];
+            
+            // All the Active function of the item passing ourself as the target
+            // We could target an enemy and have it effect them but consider that
+            // an exercise for the reader ;3
+            item.Activate(this);
+
+            // Remove the item from the inventory now that we've used it
+            inventory.RemoveAt(index);
+
+            // Return the item used to caller in case they wish to know
+            // exactly which item actually got used
+            return item;
+        }
+
+        public void ModifyHealthPoints(int change) {
+            healthPoints += change; // Equivalent to healthPoints  = healthPoints + change
+
+            // Set the health points to 0 if they're negative as we don't wish
+            // health points to ever be negative.
+            if (healthPoints < 0) {
+                healthPoints = 0;
+            }
+        }
+
+        public void ModifyAttack(int change) {
+            attack += change;
+
+            if (change < 0) {
+                change  = 0;
+            }
         }
     }
 }
