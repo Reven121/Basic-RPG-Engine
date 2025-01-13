@@ -1,6 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
 using Basic_Rpg;
-
 
 int? ReadIntFromConsole()  {
     // Read input from the console
@@ -23,12 +21,12 @@ SimpleItem healingPotion = new SimpleItem("Soothing Balm", "heal 50 HP", 50, 0);
 SimpleItem attackPotion = new SimpleItem("Stim Pack", "increase attack by 10 AP  at the cost of 50 HP", -50, 10);
 List<Item> playerInventory = new List<Item>{ healingPotion, attackPotion };
 
-Player player = new Player(1000, "frank", 50, false, playerInventory);
-Enemy enemy = new Enemy(150, "bob", 5, false);
+Player player = new Player(1000, "frank", 50, false, playerInventory, 1, 20, 4, 20, 0);
+Enemy enemy = new Enemy(150, "bob", 5, false, 2, 10, 5, 10, 0);
 
 while (!enemy.IsDead() && !player.IsDead())
 {
-    Console.WriteLine($"{player.entityName} HP: {player.healthPoints}, {enemy.entityName} HP: {enemy.healthPoints}");
+    Console.WriteLine($"{player.entityName} HP: {player.healthPoints} MP {player.currentMP} SP {player.currentSP}, {enemy.entityName} HP: {enemy.healthPoints}");
     //player turnl
     Console.WriteLine("(1) ATTACK");
     Console.WriteLine("(2) DEFEND");
@@ -40,7 +38,7 @@ while (!enemy.IsDead() && !player.IsDead())
     if (user_input == "1")
     {
         player.Attack(enemy);
-        Console.WriteLine($"{player.entityName} did {player.attack} to {enemy.entityName}");
+        Console.WriteLine($"{player.entityName} did {player.damageDone} to {enemy.entityName}");
     }
     else if(user_input == "2")
     {
@@ -81,7 +79,7 @@ while (!enemy.IsDead() && !player.IsDead())
 
     //enemy turn
     enemy.Attack(player);
-    Console.WriteLine($"{enemy.entityName} did {enemy.attack} to {player.entityName}");
+    Console.WriteLine($"{enemy.entityName} did {enemy.damageDone} to {player.entityName}");
     
 }
 

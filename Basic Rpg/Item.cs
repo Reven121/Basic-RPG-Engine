@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace Basic_Rpg
 {
-
     // Item is the abstract base class that all other times of items will inherit from.
     // As an abstract base class it will never be directly instantiated, and only
     // exists to define a common interface that it's children will implement.
@@ -52,5 +51,4 @@ namespace Basic_Rpg
             target.ModifyAttack(attackEffect);
         }
     }
-
 }
