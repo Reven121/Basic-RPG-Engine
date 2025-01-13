@@ -13,10 +13,12 @@ namespace Basic_Rpg
     {
         public string itemName; // Name that will be displayed to the user
         public string effectDescription; // Textual description of the items effect
+        public int numRemaining;
 
-        public Item(string itemName, string effectDescription) {
+        public Item(string itemName, string effectDescription, int numRemaining) {
             this.itemName = itemName;
             this.effectDescription = effectDescription;
+            this.numRemaining = numRemaining;
         }
        
         // The activate function will be called by an entity when they use the Item.
@@ -25,6 +27,13 @@ namespace Basic_Rpg
         // Instead the children of the Item class MUST override it and provider their
         // own implementation.
         public abstract void Activate(Entity target);
+
+        public virtual void ItemUsed(Item item)
+        {
+            item.numRemaining = item.numRemaining - 1;
+            if (item.numRemaining < 0)
+                item.numRemaining = 0;
+        }
     }
 
     // SimpleItem is an Item which simply applies adds or (or subtracts) a value
@@ -36,10 +45,11 @@ namespace Basic_Rpg
 
         public SimpleItem(
             string itemName, 
-            string effectDescription, 
+            string effectDescription,
+            int numRemaining,
             int healthEffect,
             int attackEffect
-        ) :  base(itemName, effectDescription) {
+        ) :  base(itemName, effectDescription, numRemaining) {
             this.healthEffect = healthEffect;
             this.attackEffect = attackEffect;
         }

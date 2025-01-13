@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -27,8 +28,6 @@ namespace Basic_Rpg
 
         public int damageDone;
 
-        public Entity(int healthPoints, string entityName, int attack, bool isDefending, int defence, int maxMP, int maxSP, int currentMP, int currentSP)
-
         public List<Item> inventory;
 
         public Entity(
@@ -36,12 +35,12 @@ namespace Basic_Rpg
                 string entityName,
                 int attack,
                 bool isDefending,
-                List<Item>? inventory = null,
                 int defence, 
                 int maxMP,
                 int maxSP,
                 int currentMP,
-                int currentSP)
+                int currentSP,
+                List<Item>? inventory = null)
         {
             this.healthPoints = healthPoints;
             this.entityName = entityName;
@@ -134,8 +133,11 @@ namespace Basic_Rpg
             // an exercise for the reader ;3
             item.Activate(this);
 
+            item.ItemUsed(item);
+
             // Remove the item from the inventory now that we've used it
-            inventory.RemoveAt(index);
+            if (item.numRemaining <= 0)
+                inventory.RemoveAt(index);
 
             // Return the item used to caller in case they wish to know
             // exactly which item actually got used

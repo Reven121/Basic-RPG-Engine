@@ -17,11 +17,11 @@ int? ReadIntFromConsole()  {
 }
 
 // We create a couple of items here and add them to the inventory
-SimpleItem healingPotion = new SimpleItem("Soothing Balm", "heal 50 HP", 50, 0);
-SimpleItem attackPotion = new SimpleItem("Stim Pack", "increase attack by 10 AP  at the cost of 50 HP", -50, 10);
+SimpleItem healingPotion = new SimpleItem("Soothing Balm", "heal 50 HP", 2, 50, 0);
+SimpleItem attackPotion = new SimpleItem("Stim Pack", "increase attack by 10 AP at the cost of 50 HP",4, -50, 10);
 List<Item> playerInventory = new List<Item>{ healingPotion, attackPotion };
 
-Player player = new Player(1000, "frank", 50, false, playerInventory, 1, 20, 4, 20, 0);
+Player player = new Player(1000, "frank", 50, false, 1, 20, 4, 20, 0, playerInventory);
 Enemy enemy = new Enemy(150, "bob", 5, false, 2, 10, 5, 10, 0);
 
 while (!enemy.IsDead() && !player.IsDead())
@@ -52,7 +52,7 @@ while (!enemy.IsDead() && !player.IsDead())
         }
         for (int i = 0; i < player.inventory.Count; i++) {
             Item item = player.inventory[i];
-            Console.WriteLine($"ITEM {i}, NAME: {item.itemName}, DESCRIPTION: {item.effectDescription}");
+            Console.WriteLine($"ITEM {i}, NAME: {item.itemName}, DESCRIPTION: {item.effectDescription}, Remaining Uses: {item.numRemaining}");
         }
         continue;
     }
