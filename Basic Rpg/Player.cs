@@ -8,6 +8,6 @@ namespace Basic_Rpg
 {
     internal class Player : Entity
     {
-        public Player(int healthpoint, string name, int attack, bool isDefending,  int defence, int maxMP, int maxSP, int currentMP, int currentSP, List<Item>? inventory = null) : base(healthpoint, name, attack, isDefending, defence, maxMP, maxSP, currentMP, currentSP, inventory) { }
+        public Player(int healthpoint, string name, int attack, int magicAttack, bool isDefending,  int defence, int magicDefence, int maxMP, int maxSP, int currentMP, int currentSP, List<Item>? inventory = null, List<Skill>? skills = null) : base(healthpoint, name, attack, magicAttack, isDefending, defence, magicDefence, maxMP, maxSP, currentMP, currentSP, inventory, skills) { }
     }
 }

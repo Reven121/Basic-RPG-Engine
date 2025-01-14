@@ -34,19 +34,24 @@ namespace Basic_Rpg
                 int healthPoints,
                 string entityName,
                 int attack,
+                int magicAttack,
                 bool isDefending,
-                int defence, 
+                int defence,
+                int magicDefence,
                 int maxMP,
                 int maxSP,
                 int currentMP,
                 int currentSP,
-                List<Item>? inventory = null)
+                List<Item>? inventory = null,
+                List<Skill>? skills = null)
         {
             this.healthPoints = healthPoints;
             this.entityName = entityName;
             this.attack = attack;
+            this.magicAttack = magicAttack;
             this.isDefending = isDefending;
             this.defence = defence;
+            this.magicDefence = magicDefence;
             this.maxMP = maxMP;
             this.maxSP = maxSP;
             this.currentMP = currentMP;

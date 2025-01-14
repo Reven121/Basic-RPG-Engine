@@ -21,8 +21,13 @@ SimpleItem healingPotion = new SimpleItem("Soothing Balm", "heal 50 HP", 2, 50, 
 SimpleItem attackPotion = new SimpleItem("Stim Pack", "increase attack by 10 AP at the cost of 50 HP",4, -50, 10);
 List<Item> playerInventory = new List<Item>{ healingPotion, attackPotion };
 
-Player player = new Player(1000, "frank", 50, false, 1, 20, 4, 20, 0, playerInventory);
-Enemy enemy = new Enemy(150, "bob", 5, false, 2, 10, 5, 10, 0);
+// Skills for Player or Enemy
+BasicSkill physicalAttack = new BasicSkill("Three Pronged Strike", "A Series Of Sweeping Blows: Deals 3x Physical Damage To Target Enemy", 0, 3, 3, 0);
+BasicSkill magicAttack = new BasicSkill("Crimson Burst", "Creates A Explosion Of Fire: Deals 2x Magic Damage To Target Enemy", 5, 0, 0, 2);
+List<Skill> playerSkills = new List<Skill> { physicalAttack, magicAttack };
+
+Player player = new Player(1000, "frank", 50, 5, false, 1, 10, 20, 4, 20, 0, playerInventory, playerSkills);
+Enemy enemy = new Enemy(150, "bob", 5, 10, false, 2, 5, 10, 5, 10, 0);
 
 while (!enemy.IsDead() && !player.IsDead())
 {
@@ -30,8 +35,10 @@ while (!enemy.IsDead() && !player.IsDead())
     //player turnl
     Console.WriteLine("(1) ATTACK");
     Console.WriteLine("(2) DEFEND");
-    Console.WriteLine("(3) SHOW INVENTORY");
-    Console.WriteLine("(4) USE ITEM");
+    Console.WriteLine("(3) SHOW SKILLS");
+    Console.WriteLine("(4) USE SKILL");
+    Console.WriteLine("(5) SHOW INVENTORY");
+    Console.WriteLine("(6) USE ITEM");
 
     string? user_input = Console.ReadLine();
     
@@ -46,6 +53,42 @@ while (!enemy.IsDead() && !player.IsDead())
     }
     else if(user_input == "3")
     {
+        for (int i = 0; i < player.skills.Count; i++)
+        {
+            Skill skill = player.skills[i];
+
+
+        }
+        continue;
+    }
+    else if(user_input == "4")
+    {
+        Console.WriteLine("WHICH SKILL SHOULD BE USED?");
+        int? index = ReadIntFromConsole();
+        if (index == null)
+        {
+            Console.WriteLine("NO SUCH SKILL FOUND. TRY AGAIN.");
+            continue;
+        }
+
+        //I know this is wrong but I cannot quite put my finger on how to phrase this
+        Skill? skill = index.Value; 
+
+        if (skill.spCost > player.currentSP)
+        {
+            Console.WriteLine("NOT ENOUGH SP. TRY ANOTHER SKILL");
+            continue;
+        }
+        else if (skill.mpCost > player.currentMP)
+        {
+            Console.WriteLine("NOT ENOUGH MP. TRY ANOTHER SKILL");
+            continue;
+        }
+        else
+            skill.UseAttackSkill(enemy, player);
+    }
+    else if(user_input == "5")
+    {
         if (player.inventory.Count == 0) {
             Console.WriteLine("INVENTORY IS EMPTY T^T");
             continue;
@@ -56,7 +99,7 @@ while (!enemy.IsDead() && !player.IsDead())
         }
         continue;
     }
-    else if (user_input == "4") {
+    else if (user_input == "6") {
         Console.WriteLine("WHICH ITEM DO YOU WANT TO USE?");
         int? index = ReadIntFromConsole();
         if (index == null) {
