@@ -128,6 +128,12 @@ while (!enemy.IsDead() && !player.IsDead())
         continue;
     }
 
+
+    if (enemy.IsDead()) {
+        // enemy is dead so they don't get to attack again
+        break;
+    }
+
     //enemy turn
     enemy.Attack(player);
     Console.WriteLine($"{enemy.entityName} did {enemy.damageDone} to {player.entityName}");
