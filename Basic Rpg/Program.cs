@@ -56,8 +56,6 @@ while (!enemy.IsDead() && !player.IsDead())
         for (int i = 0; i < player.skills.Count; i++)
         {
             Skill skill = player.skills[i];
-
-
         }
         continue;
     }
@@ -67,25 +65,30 @@ while (!enemy.IsDead() && !player.IsDead())
         int? index = ReadIntFromConsole();
         if (index == null)
         {
+            Console.WriteLine("INVALID INPUT");
+            continue;
+        }
+
+        if (index.Value < 0 || index.Value >= player.skills.Count) {
             Console.WriteLine("NO SUCH SKILL FOUND. TRY AGAIN.");
             continue;
         }
 
-        //I know this is wrong but I cannot quite put my finger on how to phrase this
-        Skill? skill = index.Value; 
+        Skill skill_to_use = player.skills[index.Value];
 
-        if (skill.spCost > player.currentSP)
+        if (skill_to_use.spCost > player.currentSP)
         {
             Console.WriteLine("NOT ENOUGH SP. TRY ANOTHER SKILL");
             continue;
         }
-        else if (skill.mpCost > player.currentMP)
+        else if (skill_to_use.mpCost > player.currentMP)
         {
             Console.WriteLine("NOT ENOUGH MP. TRY ANOTHER SKILL");
             continue;
         }
-        else
-            skill.UseAttackSkill(enemy, player);
+        else {
+            skill_to_use.UseAttackSkill(enemy, player);
+        }
     }
     else if(user_input == "5")
     {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Basic_Rpg
 {
-    internal class Skill
+    internal abstract class Skill
     {
         public string skillName;
         public string skillDescription;
@@ -31,7 +31,20 @@ namespace Basic_Rpg
             this.magicDamageScaling = magicDamageScaling;
         }
 
-        public virtual void UseAttackSkill(Entity target, Entity user)
+        public abstract void UseAttackSkill(Entity target, Entity user);
+    }
+
+    internal class BasicSkill : Skill
+    {
+        public BasicSkill(string skillName,
+                    string skillDescription,
+                    int mpCost,
+                    int spCost,
+                    int damageScaling,
+                    int magicDamageScaling
+                    ) : base(skillName, skillDescription, mpCost, spCost, damageScaling, magicDamageScaling) { }
+
+        public override void UseAttackSkill(Entity target, Entity user)
         {
             int damagedone = 0;
 
@@ -47,16 +60,5 @@ namespace Basic_Rpg
             user.currentSP = user.currentSP - spCost;
             user.currentMP = user.currentMP - mpCost;
         }
-    }
-
-    internal class BasicSkill : Skill
-    {
-        public BasicSkill(string skillName,
-                    string skillDescription,
-                    int mpCost,
-                    int spCost,
-                    int damageScaling,
-                    int magicDamageScaling
-                    ) : base(skillName, skillDescription, mpCost, spCost, damageScaling, magicDamageScaling) { }
     }
 }
