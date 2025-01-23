@@ -26,7 +26,7 @@ BasicSkill physicalAttack = new BasicSkill("Three Pronged Strike", "A Series Of 
 BasicSkill magicAttack = new BasicSkill("Crimson Burst", "Creates A Explosion Of Fire: Deals 2x Magic Damage To Target Enemy", 5, 0, 0, 2);
 List<Skill> playerSkills = new List<Skill> { physicalAttack, magicAttack };
 
-Player player = new Player(1000, "frank", 50, 5, false, 1, 10, 20, 4, 20, 0, playerInventory, playerSkills);
+Player player = new Player(1000, "frank", 50, 5, false, 1, 10, 20, 4, 20, 30, playerInventory, playerSkills);
 Enemy enemy = new Enemy(150, "bob", 5, 10, false, 2, 5, 10, 5, 10, 0);
 
 while (!enemy.IsDead() && !player.IsDead())
@@ -56,6 +56,11 @@ while (!enemy.IsDead() && !player.IsDead())
         for (int i = 0; i < player.skills.Count; i++)
         {
             Skill skill = player.skills[i];
+            Console.WriteLine($"SKILL {i}");
+            Console.WriteLine($"NAME: {skill.skillName}");
+            Console.WriteLine($"DESCRIPTION: {skill.skillDescription}");
+            Console.WriteLine($"MP COST: {skill.mpCost}");
+            Console.WriteLine($"SP COST: {skill.spCost}");
         }
         continue;
     }
