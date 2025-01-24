@@ -26,7 +26,7 @@ BasicSkill physicalAttack = new BasicSkill("Three Pronged Strike", "A Series Of 
 BasicSkill magicAttack = new BasicSkill("Crimson Burst", "Creates A Explosion Of Fire: Deals 2x Magic Damage To Target Enemy", 5, 0, 0, 2);
 List<Skill> playerSkills = new List<Skill> { physicalAttack, magicAttack };
 
-Player player = new Player(1000, "frank", 50, 5, false, 1, 10, 20, 4, 20, 0, playerInventory, playerSkills);
+Player player = new Player(1000, "frank", 50, 5, false, 1, 10, 20, 4, 20, 30, playerInventory, playerSkills);
 Enemy enemy = new Enemy(150, "bob", 5, 10, false, 2, 5, 10, 5, 10, 0);
 
 while (!enemy.IsDead() && !player.IsDead())
@@ -56,8 +56,11 @@ while (!enemy.IsDead() && !player.IsDead())
         for (int i = 0; i < player.skills.Count; i++)
         {
             Skill skill = player.skills[i];
-
-
+            Console.WriteLine($"SKILL {i}");
+            Console.WriteLine($"NAME: {skill.skillName}");
+            Console.WriteLine($"DESCRIPTION: {skill.skillDescription}");
+            Console.WriteLine($"MP COST: {skill.mpCost}");
+            Console.WriteLine($"SP COST: {skill.spCost}");
         }
         continue;
     }
@@ -67,25 +70,30 @@ while (!enemy.IsDead() && !player.IsDead())
         int? index = ReadIntFromConsole();
         if (index == null)
         {
+            Console.WriteLine("INVALID INPUT");
+            continue;
+        }
+
+        if (index.Value < 0 || index.Value >= player.skills.Count) {
             Console.WriteLine("NO SUCH SKILL FOUND. TRY AGAIN.");
             continue;
         }
 
-        //I know this is wrong but I cannot quite put my finger on how to phrase this
-        Skill? skill = index.Value; 
+        Skill skill_to_use = player.skills[index.Value];
 
-        if (skill.spCost > player.currentSP)
+        if (skill_to_use.spCost > player.currentSP)
         {
             Console.WriteLine("NOT ENOUGH SP. TRY ANOTHER SKILL");
             continue;
         }
-        else if (skill.mpCost > player.currentMP)
+        else if (skill_to_use.mpCost > player.currentMP)
         {
             Console.WriteLine("NOT ENOUGH MP. TRY ANOTHER SKILL");
             continue;
         }
-        else
-            skill.UseAttackSkill(enemy, player);
+        else {
+            skill_to_use.UseAttackSkill(enemy, player);
+        }
     }
     else if(user_input == "5")
     {
@@ -118,6 +126,12 @@ while (!enemy.IsDead() && !player.IsDead())
     {
         Console.WriteLine("Invalid Command");
         continue;
+    }
+
+
+    if (enemy.IsDead()) {
+        // enemy is dead so they don't get to attack again
+        break;
     }
 
     //enemy turn
