@@ -9,12 +9,12 @@ namespace Basic_Rpg
 {
     internal class Turn_Controller
     {
-        
+
         public List<Entity> entityTurnOrder = new List<Entity>();
 
         public Turn_Controller()
         {
-
+            
         }
 
 
@@ -29,17 +29,17 @@ namespace Basic_Rpg
         }
 
 
-        public void TurnOrderActions(List<Entity> entityOrder)
+        public void TurnOrderActions(List<Entity> entityOrder, List<Player> players, List<Enemy> enemies)
         {
             foreach (Entity entity in entityOrder)
             {
                 if (entity.GetType() == typeof(Player))
                 {
-                    PlayerTurn(entity);
+                    PlayerTurn(entity, enemies);
                 }
                 else if (entity is Enemy)
                 {
-                    EnemyTurn(entity);
+                    EnemyTurn(entity, players);
                 }
                 else
                 {
@@ -48,14 +48,21 @@ namespace Basic_Rpg
             }
         }
 
-        public void PlayerTurn(Entity player)
+        public void PlayerTurn(Entity player, List<Enemy> enemies)
         {
+
+
+
 
         }
 
-        public void EnemyTurn(Entity enemy)
+        public void EnemyTurn(Entity enemy, List<Player> players)
         {
+            var random = new Random();
+            int index = random.Next(players.Count);
 
+            enemy.Attack(players[index]);
+            Console.WriteLine($"{enemy.entityName} did {enemy.damageDone} to {players[index].entityName}");
         }
     }
 }

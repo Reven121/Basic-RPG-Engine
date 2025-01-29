@@ -29,16 +29,27 @@ List<Skill> playerSkills = new List<Skill> { physicalAttack, magicAttack };
 Player player = new Player(1000, "frank", 50, 5, false, 1, 10, 20, 4, 20, 0, playerInventory, playerSkills);
 Enemy enemy = new Enemy(150, "bob", 5, 10, false, 2, 5, 10, 5, 10, 0);
 
+List<Entity> entityList = new List<Entity>();
+List<Player> playerList = new List<Player>();
+List<Enemy> enemyList = new List<Enemy>();
+
+entityList.Add();
+
 while (!enemy.IsDead() && !player.IsDead())
 {
+    Turn_Controller.DecideInitialEntityOrder(entityList);
+
+    Turn_Controller.TurnOrderActions(entityTurnOrder, playerList, enemyList);
+
     Console.WriteLine($"{player.entityName} HP: {player.healthPoints} MP {player.currentMP} SP {player.currentSP}, {enemy.entityName} HP: {enemy.healthPoints}");
-    //player turnl
+    //player turn
     Console.WriteLine("(1) ATTACK");
     Console.WriteLine("(2) DEFEND");
     Console.WriteLine("(3) SHOW SKILLS");
     Console.WriteLine("(4) USE SKILL");
     Console.WriteLine("(5) SHOW INVENTORY");
     Console.WriteLine("(6) USE ITEM");
+    Console.WriteLine("(7) Escape");
 
     string? user_input = Console.ReadLine();
     
@@ -114,6 +125,11 @@ while (!enemy.IsDead() && !player.IsDead())
         }
         Console.WriteLine($"USED {item.itemName} to {item.effectDescription}");
     }
+    else if (user_input == "7")
+    {
+        Console.WriteLine("You try to escape....");
+        break;
+    }
     else
     {
         Console.WriteLine("Invalid Command");
@@ -128,5 +144,7 @@ while (!enemy.IsDead() && !player.IsDead())
 
 if (enemy.IsDead())
     Console.WriteLine($"{player.entityName} wins");
-else
+else if (player.IsDead())
     Console.WriteLine($"{enemy.entityName} wins");
+else
+    Console.WriteLine("The Party has escaped combat!");
