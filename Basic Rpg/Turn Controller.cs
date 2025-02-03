@@ -10,11 +10,18 @@ namespace Basic_Rpg
     internal class Turn_Controller
     {
 
-        public List<Entity> entityTurnOrder = new List<Entity>();
+        public List<Entity> entityTurnOrder;
 
-        public Turn_Controller()
+        public Turn_Controller(List<Entity>? entityTurnOrder = null)
         {
-            
+            if (entityTurnOrder == null)
+            {
+                this.entityTurnOrder = new List<Entity>();
+            }
+            else
+            {
+                this.entityTurnOrder = entityTurnOrder;
+            }
         }
 
 
@@ -35,11 +42,11 @@ namespace Basic_Rpg
             {
                 if (entity.GetType() == typeof(Player))
                 {
-                    PlayerTurn(entity, enemies);
+                    PlayerTurn(entity, enemies, players);
                 }
                 else if (entity is Enemy)
                 {
-                    EnemyTurn(entity, players);
+                    EnemyTurn(entity, players, enemies);
                 }
                 else
                 {
@@ -48,21 +55,30 @@ namespace Basic_Rpg
             }
         }
 
-        public void PlayerTurn(Entity player, List<Enemy> enemies)
+        public void PlayerTurn(Entity player, List<Enemy> enemies, List<Player> players)
         {
 
 
 
-
+            if(enemy.IsDead())
+                //remove from list so will not act again
+                //Is this an issue if done with an ongoing foreach loop?
+                //How to do this if muliple enemies die at the same time?
+            
+            if (player.IsDead())
+              //remove from list if died, maybe add entityTurnOrder list so it can also be removed from there?
+              //when player dies in their own turn from dot or self damage etc.
         }
 
-        public void EnemyTurn(Entity enemy, List<Player> players)
+        public void EnemyTurn(Entity enemy, List<Player> players, List<Enemy> enemies)
         {
-            var random = new Random();
-            int index = random.Next(players.Count);
+                var random = new Random();
+                int index = random.Next(players.Count);
 
-            enemy.Attack(players[index]);
-            Console.WriteLine($"{enemy.entityName} did {enemy.damageDone} to {players[index].entityName}");
+                enemy.Attack(players[index]);
+                Console.WriteLine($"{enemy.entityName} did {enemy.damageDone} to {players[index].entityName}");
+
+                //needs same IsDead stuff as Player turn
         }
     }
 }

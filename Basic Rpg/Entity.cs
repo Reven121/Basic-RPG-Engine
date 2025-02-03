@@ -29,6 +29,7 @@ namespace Basic_Rpg
         public int damageDone;
 
         public List<Item> inventory;
+        public List<Skill> skills;
 
         public Entity(
                 int healthPoints,
@@ -62,6 +63,15 @@ namespace Basic_Rpg
             }
             else {
                 this.inventory = inventory;
+            }
+
+            if (skills == null)
+            {
+                this.skills = new List<Skill>();
+            }
+            else
+            {
+                this.skills = skills;
             }
         }
 
