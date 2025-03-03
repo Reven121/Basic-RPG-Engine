@@ -30,6 +30,7 @@ namespace Basic_Rpg
 
         public virtual void ItemUsed(Item item)
         {
+            //add ability to target player or enemy
             item.numRemaining = item.numRemaining - 1;
             if (item.numRemaining < 0)
                 item.numRemaining = 0;

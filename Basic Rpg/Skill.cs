@@ -16,13 +16,15 @@ namespace Basic_Rpg
         public int spCost;
         public int damageScaling;
         public int magicDamageScaling;
+        //public bool isAttack;
 
         public Skill(string skillName,
                     string skillDescription,
                     int mpCost,
                     int spCost,
                     int damageScaling,
-                    int magicDamageScaling)
+                    int magicDamageScaling
+                    )
         {
             this.skillName = skillName;
             this.skillDescription = skillDescription;
@@ -30,6 +32,7 @@ namespace Basic_Rpg
             this.spCost = spCost;
             this.damageScaling = damageScaling;
             this.magicDamageScaling = magicDamageScaling;
+            //this.isAttack = isAttack;
         }
         public abstract void UseAttackSkill(Entity target, Entity user);
         
@@ -43,6 +46,7 @@ namespace Basic_Rpg
                     int spCost,
                     int damageScaling,
                     int magicDamageScaling
+                    //bool isAttack
                     ) : base(skillName, skillDescription, mpCost, spCost, damageScaling, magicDamageScaling) { }
 
         public override void UseAttackSkill(Entity target, Entity user)
