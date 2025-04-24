@@ -28,6 +28,9 @@ namespace Basic_Rpg
         }
 
         public List<Entity> entityTurnOrder;
+        
+
+     
 
         public Turn_Controller(List<Entity>? entityTurnOrder = null)
         {
@@ -57,6 +60,10 @@ namespace Basic_Rpg
         {
             foreach (Entity entity in this.entityTurnOrder)
             {
+                if (players.Any(player => player.isFled == true))
+                {
+                    break;
+                }
                 if (entity.GetType() == typeof(Player) && !entity.IsDead())
                 {
                     PlayerTurn(entity, enemies, players);
@@ -75,6 +82,7 @@ namespace Basic_Rpg
         public void PlayerTurn(Entity CurrentPlayer, List<Enemy> enemies, List<Player> players)
         {
             bool isPlayerTurn = true;
+            
 
             while (isPlayerTurn) {
 
@@ -247,6 +255,7 @@ namespace Basic_Rpg
                 else if (user_input == "7")
                 {
                     Console.WriteLine("You try to escape....");
+                    CurrentPlayer.isFled = true;
                     break;
                 }
                 else

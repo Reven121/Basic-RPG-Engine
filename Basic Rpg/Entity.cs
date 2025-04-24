@@ -17,6 +17,7 @@ namespace Basic_Rpg
         public int magicDefence;
         public int speed;
         public bool isDefending;
+        public bool isFled;
         public bool isAttackUp;
         public int maxMP;
         public int maxSP;
@@ -37,6 +38,7 @@ namespace Basic_Rpg
                 int attack,
                 int magicAttack,
                 bool isDefending,
+                bool isFled,
                 int defence,
                 int magicDefence,
                 int maxMP,
@@ -51,6 +53,7 @@ namespace Basic_Rpg
             this.attack = attack;
             this.magicAttack = magicAttack;
             this.isDefending = isDefending;
+            this.isFled = isFled;
             this.defence = defence;
             this.magicDefence = magicDefence;
             this.maxMP = maxMP;
@@ -126,6 +129,11 @@ namespace Basic_Rpg
         public bool IsDead()
         {
             return healthPoints <= 0;
+        }
+
+        public bool doneFled()
+        {
+            return isFled == true;
         }
 
         public virtual void Defend(Entity target)
