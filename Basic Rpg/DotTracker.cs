@@ -12,7 +12,7 @@ namespace Basic_Rpg
         //int damagePerTurn;
 
 
-
+        /*
         if(Player.isPlayerTurn)
             dotDuration = dotDuration - 1;
 
@@ -23,5 +23,6 @@ namespace Basic_Rpg
         {
 
         }
+        */
     }
 }

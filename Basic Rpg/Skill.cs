@@ -16,15 +16,15 @@ namespace Basic_Rpg
         public int spCost;
         public int damageScaling;
         public int magicDamageScaling;
-        //public bool isAttack;
+        public bool isAttack;
 
         public Skill(string skillName,
                     string skillDescription,
                     int mpCost,
                     int spCost,
                     int damageScaling,
-                    int magicDamageScaling
-                    //bool isAttack
+                    int magicDamageScaling,
+                    bool isAttack
                     )
         {
             this.skillName = skillName;
@@ -33,9 +33,9 @@ namespace Basic_Rpg
             this.spCost = spCost;
             this.damageScaling = damageScaling;
             this.magicDamageScaling = magicDamageScaling;
-            //this.isAttack = isAttack;
+            this.isAttack = isAttack;
         }
-        public abstract void UseAttackSkill(Entity target, Entity user);
+        public abstract void UseSkill(Entity target, Entity user);
         
     }
 
@@ -47,10 +47,9 @@ namespace Basic_Rpg
                     int spCost,
                     int damageScaling,
                     int magicDamageScaling
-                    //bool isAttack
-                    ) : base(skillName, skillDescription, mpCost, spCost, damageScaling, magicDamageScaling) { }
+                    ) : base(skillName, skillDescription, mpCost, spCost, damageScaling, magicDamageScaling, true) { }
 
-        public override void UseAttackSkill(Entity target, Entity user)
+        public override void UseSkill(Entity target, Entity user)
         {
             int damagedone = 0;
 
@@ -71,23 +70,23 @@ namespace Basic_Rpg
 
     internal class HealSkill : Skill
     {
+        
         public HealSkill(string skillName,
                     string skillDescription,
                     int mpCost,
                     int spCost,
                     int damageScaling,
                     int magicDamageScaling
-                    //bool isAttack
-                    ) : base(skillName, skillDescription, mpCost, spCost, damageScaling, magicDamageScaling) { }
+                    ) : base(skillName, skillDescription, mpCost, spCost, damageScaling, magicDamageScaling, false) { }
 
-        public override void UseAttackSkill(Entity target, Entity user)
+        public override void UseSkill(Entity target, Entity user)
         {
             int damagedone = 0;
 
             if (!(damageScaling <= 0))
-                damagedone = damageScaling * (user.healthPoints * 0.1);
+                damagedone = damageScaling * (int)Math.Ceiling(user.maxHealthPoints * 0.1);
             if (!(magicDamageScaling <= 0))
-                damagedone = magicDamageScaling * (user.magicAttack * 0.1);
+                damagedone = magicDamageScaling * (int)Math.Ceiling(user.magicAttack * 0.1);
 
             target.HealDamage(damagedone);
 
@@ -100,6 +99,10 @@ namespace Basic_Rpg
 
     internal class BuffSkill : Skill
     {
+        private int buffSetAmount;
+        private double buffPercent;
+        private int buffDuration;
+
         public BuffSkill(string skillName,
                     string skillDescription,
                     int mpCost,
@@ -107,19 +110,22 @@ namespace Basic_Rpg
                     int damageScaling,
                     int magicDamageScaling,
                     int buffSetAmount,
-                    int buffPercent,
+                    double buffPercent,
                     int buffDuration
-                    //bool isAttack
-                    ) : base(skillName, skillDescription, mpCost, spCost, damageScaling, magicDamageScaling) { }
+                    ) : base(skillName, skillDescription, mpCost, spCost, damageScaling, magicDamageScaling, false) {
+                    this.buffDuration = buffDuration;
+                    this.buffSetAmount = buffSetAmount; 
+                    this.buffPercent = buffPercent;
+                    }
 
-        public override void UseAttackSkill(Entity target, Entity user)
+        public override void UseSkill(Entity target, Entity user)
         {
             int buffValue = 0;
 
             if (buffSetAmount > 0)
-                buffValue = buffValue + BuffSkill.buffSetAmount;
+                buffValue = buffValue + buffSetAmount;
             if (buffPercent > 0)
-                buffValue = buffValue * buffPercent);
+                buffValue = (int)Math.Ceiling(buffValue * buffPercent);
 
             target.ModifyAttack(buffValue);
 
@@ -138,10 +144,9 @@ namespace Basic_Rpg
                     int spCost,
                     int damageScaling,
                     int magicDamageScaling
-                    //bool isAttack
-                    ) : base(skillName, skillDescription, mpCost, spCost, damageScaling, magicDamageScaling) { }
+                    ) : base(skillName, skillDescription, mpCost, spCost, damageScaling, magicDamageScaling, true) { }
 
-        public override void UseAttackSkill(Entity target, Entity user)
+        public override void UseSkill(Entity target, Entity user)
         {
             int damageDonePerTick = 0;
 

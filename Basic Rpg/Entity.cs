@@ -9,6 +9,7 @@ namespace Basic_Rpg
 {
     internal class Entity
     {
+        //public EntityStats stats;
         public int healthPoints;
         public int maxHealthPoints;
         public string entityName;
@@ -19,7 +20,7 @@ namespace Basic_Rpg
         public int speed;
         public bool isDefending;
         public bool isFled;
-        public bool isAttackUp;
+        //public bool isAttackUp;
         public int maxMP;
         public int maxSP;
         public int currentMP;
@@ -35,6 +36,7 @@ namespace Basic_Rpg
         public List<Skill> skills;
 
         public Entity(
+                //EntityStats stats,
                 int healthPoints,
                 int maxHealthPoints,
                 string entityName,
@@ -44,6 +46,7 @@ namespace Basic_Rpg
                 bool isFled,
                 int defence,
                 int magicDefence,
+                int speed,
                 int maxMP,
                 int maxSP,
                 int currentMP,
@@ -51,6 +54,7 @@ namespace Basic_Rpg
                 List<Item>? inventory = null,
                 List<Skill>? skills = null)
         {
+            //this.stats = stats;
             this.healthPoints = healthPoints;
             this.maxHealthPoints = maxHealthPoints;
             this.entityName = entityName;
@@ -60,6 +64,7 @@ namespace Basic_Rpg
             this.isFled = isFled;
             this.defence = defence;
             this.magicDefence = magicDefence;
+            this.speed = speed;
             this.maxMP = maxMP;
             this.maxSP = maxSP;
             this.currentMP = currentMP;
@@ -203,5 +208,43 @@ namespace Basic_Rpg
                 change  = 0;
             }
         }
+    }
+
+    class EntityStats
+    {
+        private int maxHealthPoints;
+        public int MaxHealthPoints 
+        { 
+            get { return 2 * maxHealthPoints; }
+        }
+        public int attack;
+        public int magicAttack;
+        public int defence;
+        public int magicDefence;
+        public int speed;
+        public int maxMP;
+        public int maxSP;
+
+        public EntityStats(
+                int maxHealthPoints,
+                int attack,
+                int magicAttack,
+                int defence,
+                int magicDefence,
+                int speed,
+                int maxMP,
+                int maxSP)
+        {
+            this.maxHealthPoints = maxHealthPoints;
+            this.attack = attack;
+            this.magicAttack = magicAttack;
+            this.defence = defence;
+            this.magicDefence = magicDefence;
+            this.speed = speed;
+            this.maxMP = maxMP;
+            this.maxSP = maxSP;
+        }
+
+
     }
 }

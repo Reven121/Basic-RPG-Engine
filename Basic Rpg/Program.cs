@@ -26,11 +26,12 @@ BasicSkill physicalAttack = new BasicSkill("Three Pronged Strike", "A Series Of 
 BasicSkill magicAttack = new BasicSkill("Crimson Burst", "Creates A Explosion Of Fire: Deals 2x Magic Damage To Target Enemy", 5, 0, 0, 2);
 List<Skill> playerSkills = new List<Skill> { physicalAttack, magicAttack };
 
-Player player1 = new Player(1000, 1000, "frank", 50, 5, false, false, 1, 10, 20, 4, 20, 0, playerInventory, playerSkills);
-Enemy enemy1 = new Enemy(150, 150, "bob", 5, 10, false, false, 2, 5, 10, 5, 10, 0);
+Player player1 = new Player(1000, 1000, "frank", 50, 5, false, false, 1, 10, 20, 4, 20, 0, 8, playerInventory, playerSkills);
+Player player2 = new Player(1000, 1000, "Alice", 50, 5, false, false, 1, 10, 20, 4, 20, 0, 10, playerInventory, playerSkills);
+Enemy enemy1 = new Enemy(150, 150, "bob", 5, 10, false, false, 2, 5, 5, 10, 5, 10, 0);
 
-List<Entity> entityList = new List<Entity> { player1, enemy1 };
-List<Player> playerList = new List<Player> { player1 };
+List<Entity> entityList = new List<Entity> { player1, player2, enemy1 };
+List<Player> playerList = new List<Player> { player1, player2 };
 List<Enemy> enemyList = new List<Enemy> { enemy1 };
 List<Entity> entityTurnOrder = new List<Entity>();
 

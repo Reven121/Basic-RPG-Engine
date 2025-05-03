@@ -48,7 +48,7 @@ namespace Basic_Rpg
         public List<Entity> DecideInitialEntityOrder(List<Entity> enties)
         {
 
-            enties = enties.OrderBy(entity => entity.speed).ToList();
+            enties = enties.OrderBy(entity => -entity.speed).ToList();
 
             entityTurnOrder = enties;
 
@@ -218,7 +218,7 @@ namespace Basic_Rpg
                         continue;
                     }
 
-                    skill_to_use.UseAttackSkill(enemy, CurrentPlayer);
+                    skill_to_use.UseSkill(enemy, CurrentPlayer);
                 }
                 else if (user_input == "5")
                 {
@@ -270,16 +270,22 @@ namespace Basic_Rpg
 
         public void EnemyTurn(Entity CurrentEnemy, List<Player> players, List<Enemy> enemies)
         {
-            int index = 0;
+            bool playersAreAlive = false;
 
-            DecideEnemyTarget(players);
-
-            while (players[index].IsDead())
+            foreach(Player player in players)
             {
-                DecideEnemyTarget(players);
+                if (!player.IsDead())
+                {
+                    playersAreAlive = true;
+                    break;
+                }
             }
 
-                
+            if (!playersAreAlive)
+                return;
+
+            int index = DecideEnemyTarget(players);
+
             CurrentEnemy.Attack(players[index]);
             Console.WriteLine($"{CurrentEnemy.entityName} did {CurrentEnemy.damageDone} to {players[index].entityName}");
 
@@ -288,7 +294,16 @@ namespace Basic_Rpg
         public int DecideEnemyTarget(List<Player> players)
         {
             var random = new Random();
-            int index = random.Next(players.Count);
+            int index = -1;
+            while (true)
+            {
+                index = random.Next(players.Count);
+                if (!players[index].IsDead())
+                {
+                    break;
+                }
+            }
+            
             return index;
         }
     }
