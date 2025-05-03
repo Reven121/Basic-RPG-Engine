@@ -7,8 +7,20 @@
       "RelativeMoniker": "D:0:0:{AAE5B9D4-FD0C-4EEA-81B3-11741F55930A}|Basic Rpg\\Basic Rpg.csproj|solutionrelative:basic rpg\\turn controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AAE5B9D4-FD0C-4EEA-81B3-11741F55930A}|Basic Rpg\\Basic Rpg.csproj|d:\\basic-rpg-engine\\basic rpg\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AAE5B9D4-FD0C-4EEA-81B3-11741F55930A}|Basic Rpg\\Basic Rpg.csproj|solutionrelative:basic rpg\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AAE5B9D4-FD0C-4EEA-81B3-11741F55930A}|Basic Rpg\\Basic Rpg.csproj|d:\\basic-rpg-engine\\basic rpg\\skill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AAE5B9D4-FD0C-4EEA-81B3-11741F55930A}|Basic Rpg\\Basic Rpg.csproj|solutionrelative:basic rpg\\skill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AAE5B9D4-FD0C-4EEA-81B3-11741F55930A}|Basic Rpg\\Basic Rpg.csproj|d:\\basic-rpg-engine\\basic rpg\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AAE5B9D4-FD0C-4EEA-81B3-11741F55930A}|Basic Rpg\\Basic Rpg.csproj|solutionrelative:basic rpg\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AAE5B9D4-FD0C-4EEA-81B3-11741F55930A}|Basic Rpg\\Basic Rpg.csproj|d:\\basic-rpg-engine\\basic rpg\\bufftracker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AAE5B9D4-FD0C-4EEA-81B3-11741F55930A}|Basic Rpg\\Basic Rpg.csproj|solutionrelative:basic rpg\\bufftracker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AAE5B9D4-FD0C-4EEA-81B3-11741F55930A}|Basic Rpg\\Basic Rpg.csproj|d:\\basic-rpg-engine\\basic rpg\\dottracker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AAE5B9D4-FD0C-4EEA-81B3-11741F55930A}|Basic Rpg\\Basic Rpg.csproj|solutionrelative:basic rpg\\dottracker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{AAE5B9D4-FD0C-4EEA-81B3-11741F55930A}|Basic Rpg\\Basic Rpg.csproj|d:\\basic-rpg-engine\\basic rpg\\entity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -19,16 +31,12 @@
       "RelativeMoniker": "D:0:0:{AAE5B9D4-FD0C-4EEA-81B3-11741F55930A}|Basic Rpg\\Basic Rpg.csproj|solutionrelative:basic rpg\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{AAE5B9D4-FD0C-4EEA-81B3-11741F55930A}|Basic Rpg\\Basic Rpg.csproj|d:\\basic-rpg-engine\\basic rpg\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AAE5B9D4-FD0C-4EEA-81B3-11741F55930A}|Basic Rpg\\Basic Rpg.csproj|solutionrelative:basic rpg\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{AAE5B9D4-FD0C-4EEA-81B3-11741F55930A}|Basic Rpg\\Basic Rpg.csproj|d:\\basic-rpg-engine\\basic rpg\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AAE5B9D4-FD0C-4EEA-81B3-11741F55930A}|Basic Rpg\\Basic Rpg.csproj|solutionrelative:basic rpg\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AAE5B9D4-FD0C-4EEA-81B3-11741F55930A}|Basic Rpg\\Basic Rpg.csproj|d:\\basic-rpg-engine\\basic rpg\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AAE5B9D4-FD0C-4EEA-81B3-11741F55930A}|Basic Rpg\\Basic Rpg.csproj|solutionrelative:basic rpg\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AAE5B9D4-FD0C-4EEA-81B3-11741F55930A}|Basic Rpg\\Basic Rpg.csproj|d:\\basic-rpg-engine\\basic rpg\\skill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AAE5B9D4-FD0C-4EEA-81B3-11741F55930A}|Basic Rpg\\Basic Rpg.csproj|solutionrelative:basic rpg\\skill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,8 +46,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DotTracker.cs",
+              "DocumentMoniker": "D:\\Basic-RPG-Engine\\Basic Rpg\\DotTracker.cs",
+              "RelativeDocumentMoniker": "Basic Rpg\\DotTracker.cs",
+              "ToolTip": "D:\\Basic-RPG-Engine\\Basic Rpg\\DotTracker.cs",
+              "RelativeToolTip": "Basic Rpg\\DotTracker.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-30T12:41:51.357Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BuffTracker.cs",
+              "DocumentMoniker": "D:\\Basic-RPG-Engine\\Basic Rpg\\BuffTracker.cs",
+              "RelativeDocumentMoniker": "Basic Rpg\\BuffTracker.cs",
+              "ToolTip": "D:\\Basic-RPG-Engine\\Basic Rpg\\BuffTracker.cs",
+              "RelativeToolTip": "Basic Rpg\\BuffTracker.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-25T13:52:57.749Z"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -48,88 +80,82 @@
               "RelativeDocumentMoniker": "Basic Rpg\\Turn Controller.cs",
               "ToolTip": "D:\\Basic-RPG-Engine\\Basic Rpg\\Turn Controller.cs",
               "RelativeToolTip": "Basic Rpg\\Turn Controller.cs",
-              "ViewState": "AQIAAGQAAAAAAAAAAAApwAEBAAAuAAAA",
+              "ViewState": "AQIAAAsBAAAAAAAAAAASwMUAAABlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-23T13:25:40.687Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 1,
               "Title": "Skill.cs",
               "DocumentMoniker": "D:\\Basic-RPG-Engine\\Basic Rpg\\Skill.cs",
               "RelativeDocumentMoniker": "Basic Rpg\\Skill.cs",
               "ToolTip": "D:\\Basic-RPG-Engine\\Basic Rpg\\Skill.cs",
               "RelativeToolTip": "Basic Rpg\\Skill.cs",
-              "ViewState": "AQIAAB8AAAAAAAAAAAAQwBkAAAAqAAAA",
+              "ViewState": "AQIAAIwAAAAAAAAAAAAAAJwAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-09T17:01:54.77Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-09T17:01:54.77Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "Item.cs",
               "DocumentMoniker": "D:\\Basic-RPG-Engine\\Basic Rpg\\Item.cs",
               "RelativeDocumentMoniker": "Basic Rpg\\Item.cs",
               "ToolTip": "D:\\Basic-RPG-Engine\\Basic Rpg\\Item.cs",
               "RelativeToolTip": "Basic Rpg\\Item.cs",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAuwCAAAAAzAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAD0AAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-06T15:53:10.849Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-06T15:53:10.849Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "Player.cs",
               "DocumentMoniker": "D:\\Basic-RPG-Engine\\Basic Rpg\\Player.cs",
               "RelativeDocumentMoniker": "Basic Rpg\\Player.cs",
               "ToolTip": "D:\\Basic-RPG-Engine\\Basic Rpg\\Player.cs",
               "RelativeToolTip": "Basic Rpg\\Player.cs",
-              "ViewState": "AQIAAAcAAAAAAAAAAAAqwB0AAAAjAAAA",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAAwBoAAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-02T12:43:30.266Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-02T12:43:30.266Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "Enemy.cs",
               "DocumentMoniker": "D:\\Basic-RPG-Engine\\Basic Rpg\\Enemy.cs",
               "RelativeDocumentMoniker": "Basic Rpg\\Enemy.cs",
               "ToolTip": "D:\\Basic-RPG-Engine\\Basic Rpg\\Enemy.cs",
               "RelativeToolTip": "Basic Rpg\\Enemy.cs",
-              "ViewState": "AQIAAAUAAAAAAAAAAAAiwCEAAAAcAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-02T12:42:55.919Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-02T12:42:55.919Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 7,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Basic-RPG-Engine\\Basic Rpg\\Program.cs",
               "RelativeDocumentMoniker": "Basic Rpg\\Program.cs",
               "ToolTip": "D:\\Basic-RPG-Engine\\Basic Rpg\\Program.cs",
               "RelativeToolTip": "Basic Rpg\\Program.cs",
-              "ViewState": "AQIAAB4AAAAAAAAAAAAuwB0AAAA5AAAA",
+              "ViewState": "AQIAADoAAAAAAAAAAAAawB0AAAApAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-02T11:37:50.389Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-02T11:37:50.389Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "Entity.cs",
               "DocumentMoniker": "D:\\Basic-RPG-Engine\\Basic Rpg\\Entity.cs",
               "RelativeDocumentMoniker": "Basic Rpg\\Entity.cs",
               "ToolTip": "D:\\Basic-RPG-Engine\\Basic Rpg\\Entity.cs",
               "RelativeToolTip": "Basic Rpg\\Entity.cs",
-              "ViewState": "AQIAAGkAAAAAAAAAAAApwIcAAAAVAAAA",
+              "ViewState": "AQIAALYAAAAAAAAAAAAnwMYAAAAbAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-02T11:26:12.114Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-02T11:26:12.114Z"
             }
           ]
         }

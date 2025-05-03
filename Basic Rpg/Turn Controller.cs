@@ -195,7 +195,7 @@ namespace Basic_Rpg
                         Console.WriteLine("NOT ENOUGH MP. TRY ANOTHER SKILL");
                         continue;
                     }
-
+                    //add if statement to see if skill targets enemies or allies then act accordingly
                     Console.WriteLine("Select Enemy To Target For Attack");
                     int? enemyIndex = ReadIntFromConsole();
                     if (enemyIndex == null)
@@ -270,12 +270,26 @@ namespace Basic_Rpg
 
         public void EnemyTurn(Entity CurrentEnemy, List<Player> players, List<Enemy> enemies)
         {
-                var random = new Random();
-                int index = random.Next(players.Count);
+            int index = 0;
 
-                CurrentEnemy.Attack(players[index]);
-                Console.WriteLine($"{CurrentEnemy.entityName} did {CurrentEnemy.damageDone} to {players[index].entityName}");
+            DecideEnemyTarget(players);
 
+            while (players[index].IsDead())
+            {
+                DecideEnemyTarget(players);
+            }
+
+                
+            CurrentEnemy.Attack(players[index]);
+            Console.WriteLine($"{CurrentEnemy.entityName} did {CurrentEnemy.damageDone} to {players[index].entityName}");
+
+        }
+
+        public int DecideEnemyTarget(List<Player> players)
+        {
+            var random = new Random();
+            int index = random.Next(players.Count);
+            return index;
         }
     }
 }

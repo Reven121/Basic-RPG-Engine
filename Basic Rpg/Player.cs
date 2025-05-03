@@ -9,6 +9,7 @@ namespace Basic_Rpg
     internal class Player : Entity
     {
         public Player(int healthpoint,
+                      int maxHealthPoints,
                       string name,
                       int attack,
                       int magicAttack,
@@ -23,6 +24,7 @@ namespace Basic_Rpg
                       List<Item>? inventory = null,
                       List<Skill>? skills = null)
                       : base(healthpoint,
+                            maxHealthPoints,
                             name,
                             attack,
                             magicAttack,

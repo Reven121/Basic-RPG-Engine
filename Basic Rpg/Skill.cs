@@ -24,6 +24,7 @@ namespace Basic_Rpg
                     int spCost,
                     int damageScaling,
                     int magicDamageScaling
+                    //bool isAttack
                     )
         {
             this.skillName = skillName;
@@ -65,5 +66,98 @@ namespace Basic_Rpg
             user.currentSP = user.currentSP - spCost;
             user.currentMP = user.currentMP - mpCost;
         }
-    }  
+    }
+
+
+    internal class HealSkill : Skill
+    {
+        public HealSkill(string skillName,
+                    string skillDescription,
+                    int mpCost,
+                    int spCost,
+                    int damageScaling,
+                    int magicDamageScaling
+                    //bool isAttack
+                    ) : base(skillName, skillDescription, mpCost, spCost, damageScaling, magicDamageScaling) { }
+
+        public override void UseAttackSkill(Entity target, Entity user)
+        {
+            int damagedone = 0;
+
+            if (!(damageScaling <= 0))
+                damagedone = damageScaling * (user.healthPoints * 0.1);
+            if (!(magicDamageScaling <= 0))
+                damagedone = magicDamageScaling * (user.magicAttack * 0.1);
+
+            target.HealDamage(damagedone);
+
+            user.HealingDone(damagedone);
+
+            user.currentSP = user.currentSP - spCost;
+            user.currentMP = user.currentMP - mpCost;
+        }
+    }
+
+    internal class BuffSkill : Skill
+    {
+        public BuffSkill(string skillName,
+                    string skillDescription,
+                    int mpCost,
+                    int spCost,
+                    int damageScaling,
+                    int magicDamageScaling,
+                    int buffSetAmount,
+                    int buffPercent,
+                    int buffDuration
+                    //bool isAttack
+                    ) : base(skillName, skillDescription, mpCost, spCost, damageScaling, magicDamageScaling) { }
+
+        public override void UseAttackSkill(Entity target, Entity user)
+        {
+            int buffValue = 0;
+
+            if (buffSetAmount > 0)
+                buffValue = buffValue + BuffSkill.buffSetAmount;
+            if (buffPercent > 0)
+                buffValue = buffValue * buffPercent);
+
+            target.ModifyAttack(buffValue);
+
+            //user.HealingDone(damagedone);
+
+            user.currentSP = user.currentSP - spCost;
+            user.currentMP = user.currentMP - mpCost;
+        }
+    }
+
+    internal class DotSkill : Skill
+    {
+        public DotSkill(string skillName,
+                    string skillDescription,
+                    int mpCost,
+                    int spCost,
+                    int damageScaling,
+                    int magicDamageScaling
+                    //bool isAttack
+                    ) : base(skillName, skillDescription, mpCost, spCost, damageScaling, magicDamageScaling) { }
+
+        public override void UseAttackSkill(Entity target, Entity user)
+        {
+            int damageDonePerTick = 0;
+
+            //int dotDuration = 0;
+
+            //if (!(damageScaling <= 0))
+                //damagedone = (damageScaling * user.attack) - target.defence;
+            //if (!(magicDamageScaling <= 0))
+                //damagedone = ((magicDamageScaling * user.magicAttack) - target.magicDefence) + damagedone;
+
+            //target.TakeDamage(damageDonePerTick);
+
+            user.DamageDone(damageDonePerTick);
+
+            user.currentSP = user.currentSP - spCost;
+            user.currentMP = user.currentMP - mpCost;
+        }
+    }
 }

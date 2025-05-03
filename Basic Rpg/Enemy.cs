@@ -9,6 +9,7 @@ namespace Basic_Rpg
     internal class Enemy: Entity
     {
         public Enemy(int healthpoint,
+                    int maxHealthPoints,
                     string name,
                     int attack,
                     int magicAttack,
@@ -21,6 +22,7 @@ namespace Basic_Rpg
                     int currentMP,
                     int currentSP)
                     : base(healthpoint,
+                            maxHealthPoints,
                             name,
                             attack,
                             magicAttack,

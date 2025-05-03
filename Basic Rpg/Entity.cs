@@ -10,6 +10,7 @@ namespace Basic_Rpg
     internal class Entity
     {
         public int healthPoints;
+        public int maxHealthPoints;
         public string entityName;
         public int attack;
         public int magicAttack;
@@ -28,12 +29,14 @@ namespace Basic_Rpg
         public int maxlevel;
 
         public int damageDone;
+        public int healingAmount;
 
         public List<Item> inventory;
         public List<Skill> skills;
 
         public Entity(
                 int healthPoints,
+                int maxHealthPoints,
                 string entityName,
                 int attack,
                 int magicAttack,
@@ -49,6 +52,7 @@ namespace Basic_Rpg
                 List<Skill>? skills = null)
         {
             this.healthPoints = healthPoints;
+            this.maxHealthPoints = maxHealthPoints;
             this.entityName = entityName;
             this.attack = attack;
             this.magicAttack = magicAttack;
@@ -83,9 +87,19 @@ namespace Basic_Rpg
             ModifyHealthPoints(-damage);
         }
 
+        public virtual void HealDamage(int healing)
+        {
+            ModifyHealthPoints(+healing);
+        }
+
         public virtual int DamageDone(int damage)
         {
             return damageDone = damage;
+        }
+
+        public virtual int HealingDone(int healing)
+        {
+            return healingAmount = healing;
         }
 
         public virtual void Attack(Entity target)
@@ -174,6 +188,11 @@ namespace Basic_Rpg
             // health points to ever be negative.
             if (healthPoints < 0) {
                 healthPoints = 0;
+            }
+
+            if (healthPoints > maxHealthPoints)
+            {
+                healthPoints = maxHealthPoints;
             }
         }
 
