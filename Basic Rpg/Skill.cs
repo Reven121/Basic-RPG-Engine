@@ -54,9 +54,9 @@ namespace Basic_Rpg
             int damagedone = 0;
 
             if (!(damageScaling <= 0))
-                damagedone = (damageScaling * user.attack) - target.defence;
+                damagedone = (damageScaling * user.stats.attack) - target.stats.defence;
             if (!(magicDamageScaling <= 0))
-                damagedone = ((magicDamageScaling * user.magicAttack) - target.magicDefence) + damagedone;
+                damagedone = ((magicDamageScaling * user.stats.magicAttack) - target.stats.magicDefence) + damagedone;
 
             target.TakeDamage(damagedone);
 
@@ -84,9 +84,9 @@ namespace Basic_Rpg
             int damagedone = 0;
 
             if (!(damageScaling <= 0))
-                damagedone = damageScaling * (int)Math.Ceiling(user.maxHealthPoints * 0.1);
+                damagedone = damageScaling * (int)Math.Ceiling(user.stats.maxHealthPoints * 0.1);
             if (!(magicDamageScaling <= 0))
-                damagedone = magicDamageScaling * (int)Math.Ceiling(user.magicAttack * 0.1);
+                damagedone = magicDamageScaling * (int)Math.Ceiling(user.stats.magicAttack * 0.1);
 
             target.HealDamage(damagedone);
 

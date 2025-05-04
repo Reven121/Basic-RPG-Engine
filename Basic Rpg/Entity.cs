@@ -9,20 +9,11 @@ namespace Basic_Rpg
 {
     internal class Entity
     {
-        //public EntityStats stats;
+        public EntityStats stats;
         public int healthPoints;
-        public int maxHealthPoints;
         public string entityName;
-        public int attack;
-        public int magicAttack;
-        public int defence;
-        public int magicDefence;
-        public int speed;
         public bool isDefending;
         public bool isFled;
-        //public bool isAttackUp;
-        public int maxMP;
-        public int maxSP;
         public int currentMP;
         public int currentSP;
         public int currentLevel;
@@ -36,37 +27,21 @@ namespace Basic_Rpg
         public List<Skill> skills;
 
         public Entity(
-                //EntityStats stats,
+                EntityStats stats,
                 int healthPoints,
-                int maxHealthPoints,
                 string entityName,
-                int attack,
-                int magicAttack,
                 bool isDefending,
                 bool isFled,
-                int defence,
-                int magicDefence,
-                int speed,
-                int maxMP,
-                int maxSP,
                 int currentMP,
                 int currentSP,
                 List<Item>? inventory = null,
                 List<Skill>? skills = null)
         {
-            //this.stats = stats;
+            this.stats = stats;
             this.healthPoints = healthPoints;
-            this.maxHealthPoints = maxHealthPoints;
             this.entityName = entityName;
-            this.attack = attack;
-            this.magicAttack = magicAttack;
             this.isDefending = isDefending;
             this.isFled = isFled;
-            this.defence = defence;
-            this.magicDefence = magicDefence;
-            this.speed = speed;
-            this.maxMP = maxMP;
-            this.maxSP = maxSP;
             this.currentMP = currentMP;
             this.currentSP = currentSP;
 
@@ -111,19 +86,19 @@ namespace Basic_Rpg
         {
             if (target.isDefending)
             {
-                damageDone = (attack / 2) - target.defence;
+                damageDone = (stats.attack / 2) - target.stats.defence;
                 target.TakeDamage(damageDone);
                 DamageDone(damageDone);
             }
             else
             {
-                damageDone = attack - target.defence;
+                damageDone = stats.attack - target.stats.defence;
                 target.TakeDamage(damageDone);
                 DamageDone(damageDone);
             }
 
             currentSP = currentSP + 1;
-            CurrentSpCheck(currentSP, maxSP);
+            CurrentSpCheck(currentSP, stats.maxSP);
             target.isDefending = false;
         }
 
@@ -195,14 +170,14 @@ namespace Basic_Rpg
                 healthPoints = 0;
             }
 
-            if (healthPoints > maxHealthPoints)
+            if (healthPoints > stats.maxHealthPoints)
             {
-                healthPoints = maxHealthPoints;
+                healthPoints = stats.maxHealthPoints;
             }
         }
 
         public void ModifyAttack(int change) {
-            attack += change;
+            stats.attack += change;
 
             if (change < 0) {
                 change  = 0;
@@ -212,11 +187,7 @@ namespace Basic_Rpg
 
     class EntityStats
     {
-        private int maxHealthPoints;
-        public int MaxHealthPoints 
-        { 
-            get { return 2 * maxHealthPoints; }
-        }
+        public int maxHealthPoints;
         public int attack;
         public int magicAttack;
         public int defence;

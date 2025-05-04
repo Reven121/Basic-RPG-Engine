@@ -25,10 +25,59 @@ List<Item> playerInventory = new List<Item>{ healingPotion, attackPotion };
 BasicSkill physicalAttack = new BasicSkill("Three Pronged Strike", "A Series Of Sweeping Blows: Deals 3x Physical Damage To Target Enemy", 0, 3, 3, 0);
 BasicSkill magicAttack = new BasicSkill("Crimson Burst", "Creates A Explosion Of Fire: Deals 2x Magic Damage To Target Enemy", 5, 0, 0, 2);
 List<Skill> playerSkills = new List<Skill> { physicalAttack, magicAttack };
+EntityStats player_stats = new EntityStats(
+    maxHealthPoints: 1000,
+    attack: 50, 
+    magicAttack: 5,
+    defence: 1,
+    magicDefence: 10,
+    speed: 20,
+    maxMP: 4,
+    maxSP: 20
+);
+Player player1 = new Player(
+    stats: player_stats,
+    healthpoint: 1000, 
+    name: "frank",
+    isDefending: false,
+    isFled: false,
+    currentMP: 0, 
+    currentSP: 8,
+    inventory: playerInventory,
+    skills: playerSkills
+);
+Player player2 = new Player(
+    stats: player_stats,
+    healthpoint: 1000, 
+    name: "alice",
+    isDefending: false,
+    isFled: false,
+    currentMP: 0, 
+    currentSP: 8,
+    inventory: playerInventory,
+    skills: playerSkills
+);
 
-Player player1 = new Player(1000, 1000, "frank", 50, 5, false, false, 1, 10, 20, 4, 20, 0, 8, playerInventory, playerSkills);
-Player player2 = new Player(1000, 1000, "Alice", 50, 5, false, false, 1, 10, 20, 4, 20, 0, 10, playerInventory, playerSkills);
-Enemy enemy1 = new Enemy(150, 150, "bob", 5, 10, false, false, 2, 5, 5, 10, 5, 10, 0);
+// Enemy Definitions 
+EntityStats enemy_stats = new EntityStats(
+    maxHealthPoints: 150,
+    attack: 5,
+    magicAttack: 10,
+    defence: 2,
+    magicDefence: 5,
+    speed: 5,
+    maxMP: 10,
+    maxSP: 5
+);
+Enemy enemy1 = new Enemy(
+    stats: enemy_stats,
+    healthpoint: 150,
+    name: "bob",
+    isDefending: false,
+    isFled: false,
+    currentMP: 10,
+    currentSP:0
+);
 
 List<Entity> entityList = new List<Entity> { player1, player2, enemy1 };
 List<Player> playerList = new List<Player> { player1, player2 };
