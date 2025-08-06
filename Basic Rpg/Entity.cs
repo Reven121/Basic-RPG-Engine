@@ -185,8 +185,20 @@ namespace Basic_Rpg
         }
     }
 
+
     class EntityStats
     {
+        enum EntityStat
+        {
+            MaxHealthPoints,
+            Attack,
+            MaigcAttack,
+            Defence,
+            MagicDefence,
+            Speed,
+            MaxMP,
+            MaxSP
+        }
         public int maxHealthPoints;
         public int attack;
         public int magicAttack;
@@ -195,6 +207,7 @@ namespace Basic_Rpg
         public int speed;
         public int maxMP;
         public int maxSP;
+        private List<Buff> buffs = [];
 
         public EntityStats(
                 int maxHealthPoints,
@@ -216,6 +229,108 @@ namespace Basic_Rpg
             this.maxSP = maxSP;
         }
 
+        public void ApplyBuff(Buff newBuff) {
+            foreach (Buff buff in buffs) {
+                if (buff == newBuff) {
+                    buff.ResetBuffDuration()
+                    return;
+                }
+            }
+            self.buffs.Add(newBuff)
+        }
 
+
+        // Must be called once at the start of each turn
+        public void UpdateBuffs() {
+            foreach (Buff buff in buffs) {
+                buff.DecrementBuffDuration()
+                if (buff.HasBuffExpired) {
+                    self.buffs.Remove(buff)
+                }
+            }
+        }
+
+        private int ComputeBuffedStat(EntityStat stat) {
+            int baseStatValue = self.GetBaseStatValue(stat);
+            return 
+        }
+
+        private int GetBaseStatValue(EntityStat stat) {
+            switch (stat) {
+                case EntityStat.MaxHealthPoints:
+                    return self.maxHealthPoints;
+                case EntityStat.Attack:
+                    return self.attack;
+                case EntityStat.MaigcAttack:
+                    return self.magicAttack;
+                case EntityStat.Defence:
+                    return self.defence;
+                case EntityStat.MagicDefence:
+                    return self.magicDefence;
+                case EntityStat.Speed:
+                    return self.speed;
+                case EntityStat.MaxMP:
+                    return self.maxMP;
+                case EntityStat.MaxSP:
+                    return self.maxSP;
+                case default:
+                    Console.Error.WriteLine($"Got an invalid EntityStat value: {stat}");
+                    return 0;
+            }
+        }
+    }
+
+    class Buff {
+        private string bufName
+        private string bufSourceEntityName;
+        private EntityStats::EntityStat targetStat;
+        private int buffSetAmount;
+        private double buffPercent;
+        private int buffDurationRemaining;
+        private int maxBuffDuration;
+
+        public Buff(
+            string bufName
+            string bufSourceEntityName,
+            EntityStats::EntityStat targetStat,
+            int buffSetAmount,
+            double buffPercent,
+            int buffDuration,
+            int maxBuffDuration,
+        ) {
+            this.bufName = bufName;
+            this.bufSourceEntityName = bufSourceEntityName;
+            this.targetStat = targetStat;
+            this.buffSetAmount = buffSetAmount;
+            this.buffPercent = buffPercent;
+            this.buffDuration = buffDuration;
+            this.maxBuffDuration = maxBuffDuration;
+        }
+
+        public override bool Equals(object obj) {
+            if (obj is Buff other) {
+                return (
+                    bufName == other.bufName &&
+                    bufSourceEntityName == other.bufSourceEntityName
+                );
+            }
+            return false;
+        }
+
+        public override int GetHashCode() {
+            return HashCode.Combine(bufName, bufSourceEntityName);
+        }
+
+        public void ResetBuffDuration() {
+            this.buffDuration = this.maxBuffDuration;
+        }
+
+        public int DecrementBuffDuration() {
+            self.buffDuration--;
+        }
+
+        public bool HasBuffExpired() {
+            return self.buffDuration <= 0;
+        }
     }
 }
