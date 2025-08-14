@@ -80,22 +80,29 @@ namespace Basic_Rpg
                     string skillDescription,
                     int mpCost,
                     int spCost,
-                    int damageScaling,
-                    int magicDamageScaling
+                    uint damageScaling,
+                    uint magicDamageScaling
                     ) : base(skillName, skillDescription, mpCost, spCost, damageScaling, magicDamageScaling, false) { }
 
         public override void UseSkill(Entity target, Entity user)
         {
-            int damagedone = 0;
+            int healthHealed = 0;
+	    const double healthPercentage = 0.1;
 
-            if (!(damageScaling <= 0))
-                damagedone = damageScaling * (int)Math.Ceiling(user.stats.maxHealthPoints * 0.1);
-            if (!(magicDamageScaling <= 0))
-                damagedone = magicDamageScaling * (int)Math.Ceiling(user.stats.magicAttack * 0.1);
+            if (damageScaling != 0) {
+                healthHealed = damageScaling * (int)Math.Ceiling(
+		    user.stats.maxHealthPoints * healthPercentage
+		);
+	    }
+            if (magicDamageScaling != 0) {
+                healthHealed = magicDamageScaling * (int)Math.Ceiling(
+		    user.stats.magicAttack * healthPercentage
+		);
+	    }
 
-            target.HealDamage(damagedone);
+            target.HealDamage(healthHealed);
 
-            user.HealingDone(damagedone);
+            user.HealingDone(healthHealed);
 
             user.currentSP = user.currentSP - spCost;
             user.currentMP = user.currentMP - mpCost;
