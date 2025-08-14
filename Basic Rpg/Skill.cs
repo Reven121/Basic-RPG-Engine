@@ -63,6 +63,10 @@ namespace Basic_Rpg
                 damagedone = ((magicDamageScaling * user.stats.magicAttack) - target.stats.magicDefence) + damagedone;
 	    }
 
+	    if (damageDone < 0) {
+		damageDone = 0;
+	    }
+
             target.TakeDamage(damagedone);
 
             user.DamageDone(damagedone);
@@ -98,6 +102,10 @@ namespace Basic_Rpg
                 healthHealed = magicDamageScaling * (int)Math.Ceiling(
 		    user.stats.magicAttack * healthPercentage
 		);
+	    }
+
+	    if (healthHealed < 0) {
+		healthHealed = 0;
 	    }
 
             target.HealDamage(healthHealed);
