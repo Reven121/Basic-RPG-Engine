@@ -253,8 +253,12 @@ namespace Basic_Rpg
         }
 
         private int ComputeBuffedStat(EntityStat stat) {
-            int baseStatValue = self.GetBaseStatValue(stat);
-            return 
+            const int baseStatValue = self.GetBaseStatValue(stat);
+	    int buffedStatValue = baseStatValue;
+            foreach (Buff buff in buffs) {
+		buffedStatValue += buff.ComputeBuffAmmount(baseStatValue);
+            }
+            return buffedStatValue;
         }
 
         private int GetBaseStatValue(EntityStat stat) {
@@ -334,5 +338,14 @@ namespace Basic_Rpg
         public bool HasBuffExpired() {
             return self.buffDuration <= 0;
         }
+
+	public int ComputeBuffAmmount(int baseStatValue) {
+	    if (self.buffPercent != 0) {
+		return baseStatValue * self.buffPercent;
+	    }
+	    else {
+		return self.buffAmmount;
+	    }
+	}
     }
 }
