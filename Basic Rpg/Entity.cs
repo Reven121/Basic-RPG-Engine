@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+
+
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -245,7 +247,7 @@ namespace Basic_Rpg
             foreach (Buff buff in buffs) {
                 buff.DecrementBuffDuration()
                 if (buff.HasBuffExpired) {
-                    self.buffs.Remove(buff)
+                    self.buffs.Remove(buff);
                 }
             }
         }

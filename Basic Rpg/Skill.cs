@@ -133,10 +133,10 @@ namespace Basic_Rpg
                     double buffPercent,
                     int buffDuration
                     ) : base(skillName, skillDescription, mpCost, spCost, damageScaling, magicDamageScaling, false) {
-                    this.buffDuration = buffDuration;
-                    this.buffSetAmount = buffSetAmount; 
-                    this.buffPercent = buffPercent;
-                    }
+	    this.buffDuration = buffDuration;
+	    this.buffSetAmount = buffSetAmount; 
+	    this.buffPercent = buffPercent;
+        }
 
         public override void UseSkill(Entity target, Entity user)
         {
@@ -156,6 +156,7 @@ namespace Basic_Rpg
         }
     }
 
+    // TODO: what is this skill supposed to do?
     internal class DotSkill : Skill
     {
         public DotSkill(string skillName,
