@@ -45,18 +45,23 @@ namespace Basic_Rpg
                     string skillDescription,
                     int mpCost,
                     int spCost,
-                    int damageScaling,
-                    int magicDamageScaling
+                    uint damageScaling,
+                    uint magicDamageScaling
                     ) : base(skillName, skillDescription, mpCost, spCost, damageScaling, magicDamageScaling, true) { }
 
         public override void UseSkill(Entity target, Entity user)
         {
             int damagedone = 0;
 
-            if (!(damageScaling <= 0))
+	    // basic damage
+            if (damageScaling != 0) {
                 damagedone = (damageScaling * user.stats.attack) - target.stats.defence;
-            if (!(magicDamageScaling <= 0))
+	    }
+
+	    // magic damage
+            if (magicDamageScaling != 0) {
                 damagedone = ((magicDamageScaling * user.stats.magicAttack) - target.stats.magicDefence) + damagedone;
+	    }
 
             target.TakeDamage(damagedone);
 
