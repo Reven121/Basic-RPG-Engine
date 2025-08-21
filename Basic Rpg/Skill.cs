@@ -79,34 +79,37 @@ namespace Basic_Rpg
 
     internal class HealSkill : Skill
     {
+        public double healthPercentage;
         
         public HealSkill(string skillName,
-                    string skillDescription,
-                    int mpCost,
-                    int spCost,
-                    uint damageScaling,
-                    uint magicDamageScaling
-                    ) : base(skillName, skillDescription, mpCost, spCost, damageScaling, magicDamageScaling, false) { }
+            string skillDescription,
+            int mpCost,
+            int spCost,
+            uint damageScaling,
+            uint magicDamageScaling,
+            double healthPercentage,
+        ) : base(skillName, skillDescription, mpCost, spCost, damageScaling, magicDamageScaling, false) { 
+            this.healthPercentage = healthPercentage;
+        }
 
         public override void UseSkill(Entity target, Entity user)
         {
             int healthHealed = 0;
-	    const double healthPercentage = 0.1;
 
             if (damageScaling != 0) {
                 healthHealed = damageScaling * (int)Math.Ceiling(
-		    user.stats.maxHealthPoints * healthPercentage
-		);
-	    }
+                    user.stats.maxHealthPoints * this.healthPercentage
+                );
+            }
             if (magicDamageScaling != 0) {
                 healthHealed = magicDamageScaling * (int)Math.Ceiling(
-		    user.stats.magicAttack * healthPercentage
-		);
-	    }
+                    user.stats.magicAttack * this.healthPercentage
+                );
+            }
 
-	    if (healthHealed < 0) {
-		healthHealed = 0;
-	    }
+            if (healthHealed < 0) {
+                healthHealed = 0;
+            }
 
             target.HealDamage(healthHealed);
 
