@@ -119,46 +119,7 @@ namespace Basic_Rpg
             user.currentMP = user.currentMP - mpCost;
         }
     }
-
-    internal class BuffSkill : Skill
-    {
-        private int buffSetAmount;
-        private double buffPercent;
-        private int buffDuration;
-
-        public BuffSkill(string skillName,
-                    string skillDescription,
-                    int mpCost,
-                    int spCost,
-                    int damageScaling,
-                    int magicDamageScaling,
-                    int buffSetAmount,
-                    double buffPercent,
-                    int buffDuration
-                    ) : base(skillName, skillDescription, mpCost, spCost, damageScaling, magicDamageScaling, false) {
-	    this.buffDuration = buffDuration;
-	    this.buffSetAmount = buffSetAmount; 
-	    this.buffPercent = buffPercent;
-        }
-
-        public override void UseSkill(Entity target, Entity user)
-        {
-            int buffValue = 0;
-
-            if (buffSetAmount > 0)
-                buffValue = buffValue + buffSetAmount;
-            if (buffPercent > 0)
-                buffValue = (int)Math.Ceiling(buffValue * buffPercent);
-
-            target.ModifyAttack(buffValue);
-
-            //user.HealingDone(damagedone);
-
-            user.currentSP = user.currentSP - spCost;
-            user.currentMP = user.currentMP - mpCost;
-        }
-    }
-
+	
     // TODO: what is this skill supposed to do?
     internal class DotSkill : Skill
     {
