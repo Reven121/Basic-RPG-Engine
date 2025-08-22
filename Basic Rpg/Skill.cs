@@ -16,24 +16,21 @@ namespace Basic_Rpg
         public int spCost;
         public int damageScaling;
         public int magicDamageScaling;
-        public bool isAttack;
 
-        public Skill(string skillName,
-                    string skillDescription,
-                    int mpCost,
-                    int spCost,
-                    int damageScaling,
-                    int magicDamageScaling,
-                    bool isAttack
-                    )
-        {
+        public Skill(
+	    string skillName,
+	    string skillDescription,
+	    int mpCost,
+	    int spCost,
+	    int damageScaling,
+	    int magicDamageScaling,
+        ) {
             this.skillName = skillName;
             this.skillDescription = skillDescription;
             this.mpCost = mpCost;
             this.spCost = spCost;
             this.damageScaling = damageScaling;
             this.magicDamageScaling = magicDamageScaling;
-            this.isAttack = isAttack;
         }
         public abstract void UseSkill(Entity target, Entity user);
         
@@ -42,12 +39,12 @@ namespace Basic_Rpg
     internal class BasicSkill : Skill
     {
         public BasicSkill(string skillName,
-                    string skillDescription,
-                    int mpCost,
-                    int spCost,
-                    uint damageScaling,
-                    uint magicDamageScaling
-                    ) : base(skillName, skillDescription, mpCost, spCost, damageScaling, magicDamageScaling, true) { }
+	    string skillDescription,
+	    int mpCost,
+	    int spCost,
+	    uint damageScaling,
+	    uint magicDamageScaling
+        ) : base(skillName, skillDescription, mpCost, spCost, damageScaling, magicDamageScaling) { }
 
         public override void UseSkill(Entity target, Entity user)
         {
@@ -81,14 +78,21 @@ namespace Basic_Rpg
     {
         public double healthPercentage;
         
-        public HealSkill(string skillName,
+        public HealSkill(
+	    string skillName,
             string skillDescription,
             int mpCost,
             int spCost,
             uint damageScaling,
             uint magicDamageScaling,
             double healthPercentage,
-        ) : base(skillName, skillDescription, mpCost, spCost, damageScaling, magicDamageScaling, false) { 
+        ) : base(skillName, skillDescription, mpCost, spCost, damageScaling, magicDamageScaling) {
+	    if (damageScaling != 0 && magicDamageScaling != 0) {
+		throw new ArgumentException(
+		    "Tried to create a HealSkill with both magic and ordinary damage scaling"
+		);
+	    }
+	    
             this.healthPercentage = healthPercentage;
         }
 
