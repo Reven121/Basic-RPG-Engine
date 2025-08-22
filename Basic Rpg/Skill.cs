@@ -119,35 +119,4 @@ namespace Basic_Rpg
             user.currentMP = user.currentMP - mpCost;
         }
     }
-	
-    // TODO: what is this skill supposed to do?
-    internal class DotSkill : Skill
-    {
-        public DotSkill(string skillName,
-                    string skillDescription,
-                    int mpCost,
-                    int spCost,
-                    int damageScaling,
-                    int magicDamageScaling
-                    ) : base(skillName, skillDescription, mpCost, spCost, damageScaling, magicDamageScaling, true) { }
-
-        public override void UseSkill(Entity target, Entity user)
-        {
-            int damageDonePerTick = 0;
-
-            //int dotDuration = 0;
-
-            //if (!(damageScaling <= 0))
-                //damagedone = (damageScaling * user.attack) - target.defence;
-            //if (!(magicDamageScaling <= 0))
-                //damagedone = ((magicDamageScaling * user.magicAttack) - target.magicDefence) + damagedone;
-
-            //target.TakeDamage(damageDonePerTick);
-
-            user.DamageDone(damageDonePerTick);
-
-            user.currentSP = user.currentSP - spCost;
-            user.currentMP = user.currentMP - mpCost;
-        }
-    }
 }
