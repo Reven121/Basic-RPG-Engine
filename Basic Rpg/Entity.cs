@@ -7,10 +7,9 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Basic_Rpg
-{
-    internal class Entity
-    {
+namespace Basic_Rpg {
+
+    internal class Entity {
         public EntityStats stats;
         public int healthPoints;
         public string entityName;
@@ -37,8 +36,8 @@ namespace Basic_Rpg
                 int currentMP,
                 int currentSP,
                 List<Item>? inventory = null,
-                List<Skill>? skills = null)
-        {
+                List<Skill>? skills = null
+	) {
             this.stats = stats;
             this.healthPoints = healthPoints;
             this.entityName = entityName;
@@ -54,46 +53,41 @@ namespace Basic_Rpg
                 this.inventory = inventory;
             }
 
-            if (skills == null)
-            {
+            if (skills == null) {
+
                 this.skills = new List<Skill>();
             }
-            else
-            {
+            else {
+
                 this.skills = skills;
             }
         }
 
-        public virtual void TakeDamage(int damage)
-        {
+        public virtual void TakeDamage(int damage) {
             ModifyHealthPoints(-damage);
         }
 
-        public virtual void HealDamage(int healing)
-        {
+        public virtual void HealDamage(int healing) {
             ModifyHealthPoints(+healing);
         }
 
-        public virtual int DamageDone(int damage)
-        {
+        public virtual int DamageDone(int damage) {
             return damageDone = damage;
         }
 
-        public virtual int HealingDone(int healing)
-        {
+        public virtual int HealingDone(int healing) {
             return healingAmount = healing;
         }
 
-        public virtual void Attack(Entity target)
-        {
-            if (target.isDefending)
-            {
+        public virtual void Attack(Entity target) {
+            if (target.isDefending) {
+
                 damageDone = (stats.attack / 2) - target.stats.defence;
                 target.TakeDamage(damageDone);
                 DamageDone(damageDone);
             }
-            else
-            {
+            else {
+
                 damageDone = stats.attack - target.stats.defence;
                 target.TakeDamage(damageDone);
                 DamageDone(damageDone);
@@ -104,8 +98,8 @@ namespace Basic_Rpg
             target.isDefending = false;
         }
 
-        public int CurrentSpCheck(int currentSp, int maxSP)
-        {
+        public int CurrentSpCheck(int currentSp, int maxSP) {
+
             if (currentSP >= maxSP)
                 currentSP = maxSP;
             if (currentSP < 0)
@@ -113,8 +107,8 @@ namespace Basic_Rpg
             return currentSP;
         }
 
-        public int CurrentMPCheck(int currentMP, int maxMP)
-        {
+        public int CurrentMPCheck(int currentMP, int maxMP) {
+
             if (currentMP >= maxMP)
                 currentMP = maxMP;
             if (currentMP < 0)
@@ -122,18 +116,18 @@ namespace Basic_Rpg
             return currentMP;
         }
 
-        public bool IsDead()
-        {
+        public bool IsDead() {
+
             return healthPoints <= 0;
         }
 
-        public bool doneFled()
-        {
+        public bool doneFled() {
+
             return isFled == true;
         }
 
-        public virtual void Defend(Entity target)
-        {
+        public virtual void Defend(Entity target) {
+
             target.isDefending = true;
         }
 
@@ -172,8 +166,8 @@ namespace Basic_Rpg
                 healthPoints = 0;
             }
 
-            if (healthPoints > stats.maxHealthPoints)
-            {
+            if (healthPoints > stats.maxHealthPoints) {
+
                 healthPoints = stats.maxHealthPoints;
             }
         }
@@ -188,10 +182,9 @@ namespace Basic_Rpg
     }
 
 
-    class EntityStats
-    {
-        enum EntityStat
-        {
+    public class EntityStats {
+        public enum EntityStat {
+
             MaxHealthPoints,
             Attack,
             MaigcAttack,
@@ -212,15 +205,15 @@ namespace Basic_Rpg
         private List<Buff> buffs = [];
 
         public EntityStats(
-                int maxHealthPoints,
-                int attack,
-                int magicAttack,
-                int defence,
-                int magicDefence,
-                int speed,
-                int maxMP,
-                int maxSP)
-        {
+	    int maxHealthPoints,
+	    int attack,
+	    int magicAttack,
+	    int defence,
+	    int magicDefence,
+	    int speed,
+	    int maxMP,
+	    int maxSP
+	) {
             this.maxHealthPoints = maxHealthPoints;
             this.attack = attack;
             this.magicAttack = magicAttack;
@@ -234,26 +227,26 @@ namespace Basic_Rpg
         public void ApplyBuff(Buff newBuff) {
             foreach (Buff buff in buffs) {
                 if (buff == newBuff) {
-                    buff.ResetBuffDuration()
+                    buff.ResetBuffDuration();
                     return;
                 }
             }
-            self.buffs.Add(newBuff)
+            this.buffs.Add(newBuff);
         }
 
 
         // Must be called once at the start of each turn
         public void UpdateBuffs() {
             foreach (Buff buff in buffs) {
-                buff.DecrementBuffDuration()
-                if (buff.HasBuffExpired) {
-                    self.buffs.Remove(buff);
+                buff.DecrementBuffDuration();
+                if (buff.HasBuffExpired()) {
+                    this.buffs.Remove(buff);
                 }
             }
         }
 
         private int ComputeBuffedStat(EntityStat stat) {
-            const int baseStatValue = self.GetBaseStatValue(stat);
+            int baseStatValue = this.GetBaseStatValue(stat);
 	    int buffedStatValue = baseStatValue;
             foreach (Buff buff in buffs) {
 		buffedStatValue += buff.ComputeBuffAmmount(baseStatValue);
@@ -264,52 +257,51 @@ namespace Basic_Rpg
         private int GetBaseStatValue(EntityStat stat) {
             switch (stat) {
                 case EntityStat.MaxHealthPoints:
-                    return self.maxHealthPoints;
+                    return this.maxHealthPoints;
                 case EntityStat.Attack:
-                    return self.attack;
+                    return this.attack;
                 case EntityStat.MaigcAttack:
-                    return self.magicAttack;
+                    return this.magicAttack;
                 case EntityStat.Defence:
-                    return self.defence;
+                    return this.defence;
                 case EntityStat.MagicDefence:
-                    return self.magicDefence;
+                    return this.magicDefence;
                 case EntityStat.Speed:
-                    return self.speed;
+                    return this.speed;
                 case EntityStat.MaxMP:
-                    return self.maxMP;
+                    return this.maxMP;
                 case EntityStat.MaxSP:
-                    return self.maxSP;
-                case default:
+                    return this.maxSP;
+		default:
                     Console.Error.WriteLine($"Got an invalid EntityStat value: {stat}");
                     return 0;
             }
         }
     }
 
-    class Buff {
-        private string bufName
+    public class Buff {
+        private string bufName;
         private string bufSourceEntityName;
-        private EntityStats::EntityStat targetStat;
-        private int buffSetAmount;
+        private EntityStats.EntityStat targetStat;
+        private int buffAmount;
         private double buffPercent;
         private int buffDurationRemaining;
         private int maxBuffDuration;
 
         public Buff(
-            string bufName
+            string bufName,
             string bufSourceEntityName,
-            EntityStats::EntityStat targetStat,
-            int buffSetAmount,
+            EntityStats.EntityStat targetStat,
+            int buffAmount,
             double buffPercent,
-            int buffDuration,
-            int maxBuffDuration,
+            int maxBuffDuration
         ) {
             this.bufName = bufName;
             this.bufSourceEntityName = bufSourceEntityName;
             this.targetStat = targetStat;
-            this.buffSetAmount = buffSetAmount;
+            this.buffAmount = buffAmount;
             this.buffPercent = buffPercent;
-            this.buffDuration = buffDuration;
+	    this.buffDurationRemaining = maxBuffDuration;
             this.maxBuffDuration = maxBuffDuration;
         }
 
@@ -328,23 +320,23 @@ namespace Basic_Rpg
         }
 
         public void ResetBuffDuration() {
-            this.buffDuration = this.maxBuffDuration;
+            this.buffDurationRemaining = this.maxBuffDuration;
         }
 
-        public int DecrementBuffDuration() {
-            self.buffDuration--;
+        public void DecrementBuffDuration() {
+            this.buffDurationRemaining --;
         }
 
         public bool HasBuffExpired() {
-            return self.buffDuration <= 0;
+            return this.buffDurationRemaining  <= 0;
         }
 
 	public int ComputeBuffAmmount(int baseStatValue) {
-	    if (self.buffPercent != 0) {
-		return baseStatValue * self.buffPercent;
+	    if (this.buffPercent != 0) {
+		return (int) (baseStatValue * this.buffPercent);
 	    }
 	    else {
-		return self.buffAmmount;
+		return this.buffAmount;
 	    }
 	}
     }

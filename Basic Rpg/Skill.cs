@@ -23,7 +23,7 @@ namespace Basic_Rpg
 	    int mpCost,
 	    int spCost,
 	    int damageScaling,
-	    int magicDamageScaling,
+	    int magicDamageScaling
         ) {
             this.skillName = skillName;
             this.skillDescription = skillDescription;
@@ -42,31 +42,31 @@ namespace Basic_Rpg
 	    string skillDescription,
 	    int mpCost,
 	    int spCost,
-	    uint damageScaling,
-	    uint magicDamageScaling
+	    int damageScaling,
+	    int magicDamageScaling
         ) : base(skillName, skillDescription, mpCost, spCost, damageScaling, magicDamageScaling) { }
 
         public override void UseSkill(Entity target, Entity user)
         {
-            int damagedone = 0;
+            int damageDone = 0;
 
 	    // basic damage
             if (damageScaling != 0) {
-                damagedone = (damageScaling * user.stats.attack) - target.stats.defence;
+                damageDone = (damageScaling * user.stats.attack) - target.stats.defence;
 	    }
 
 	    // magic damage
             if (magicDamageScaling != 0) {
-                damagedone = ((magicDamageScaling * user.stats.magicAttack) - target.stats.magicDefence) + damagedone;
+                damageDone = ((magicDamageScaling * user.stats.magicAttack) - target.stats.magicDefence) + damageDone;
 	    }
 
 	    if (damageDone < 0) {
 		damageDone = 0;
 	    }
 
-            target.TakeDamage(damagedone);
+            target.TakeDamage(damageDone);
 
-            user.DamageDone(damagedone);
+            user.DamageDone(damageDone);
 
             user.currentSP = user.currentSP - spCost;
             user.currentMP = user.currentMP - mpCost;
@@ -83,9 +83,9 @@ namespace Basic_Rpg
             string skillDescription,
             int mpCost,
             int spCost,
-            uint damageScaling,
-            uint magicDamageScaling,
-            double healthPercentage,
+            int damageScaling,
+            int magicDamageScaling,
+            double healthPercentage
         ) : base(skillName, skillDescription, mpCost, spCost, damageScaling, magicDamageScaling) {
 	    if (damageScaling != 0 && magicDamageScaling != 0) {
 		throw new ArgumentException(
