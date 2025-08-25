@@ -48,7 +48,7 @@ namespace Basic_Rpg
         public List<Entity> DecideInitialEntityOrder(List<Entity> enties)
         {
 
-            enties = enties.OrderBy(entity => -entity.speed).ToList();
+            enties = enties.OrderBy(entity => -entity.stats.speed).ToList();
 
             entityTurnOrder = enties;
 
