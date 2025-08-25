@@ -24,7 +24,26 @@ List<Item> playerInventory = new List<Item>{ healingPotion, attackPotion };
 // Skills for Player or Enemy
 BasicSkill physicalAttack = new BasicSkill("Three Pronged Strike", "A Series Of Sweeping Blows: Deals 3x Physical Damage To Target Enemy", 0, 3, 3, 0);
 BasicSkill magicAttack = new BasicSkill("Crimson Burst", "Creates A Explosion Of Fire: Deals 2x Magic Damage To Target Enemy", 5, 0, 0, 2);
-List<Skill> playerSkills = new List<Skill> { physicalAttack, magicAttack };
+Buff skpBuff = new Buff(
+    "Super Killer Power",
+    null,
+    EntityStats.EntityStat.Attack,
+    100,
+    0,
+    3
+);
+BuffSkill skpSkill = new BuffSkill(
+    "Super Killer Power",
+    "Skill that super kills people",
+    1,
+    0,
+    skpBuff,
+    true
+);
+    
+    
+
+List<Skill> playerSkills = new List<Skill> { physicalAttack, magicAttack, skpSkill };
 EntityStats player_stats = new EntityStats(
     maxHealthPoints: 1000,
     attack: 50, 
@@ -41,7 +60,7 @@ Player player1 = new Player(
     name: "frank",
     isDefending: false,
     isFled: false,
-    currentMP: 0, 
+    currentMP: 8, 
     currentSP: 8,
     inventory: playerInventory,
     skills: playerSkills

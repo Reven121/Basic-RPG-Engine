@@ -14,8 +14,6 @@ namespace Basic_Rpg
         public string skillDescription;
         public int mpCost;
         public int spCost;
-        public int damageScaling;
-        public int magicDamageScaling;
 	public bool isEnemyTargeted;
 
         public Skill(
@@ -23,31 +21,63 @@ namespace Basic_Rpg
 	    string skillDescription,
 	    int mpCost,
 	    int spCost,
-	    int damageScaling,
-	    int magicDamageScaling,
 	    bool isEnemyTargeted
         ) {
             this.skillName = skillName;
             this.skillDescription = skillDescription;
             this.mpCost = mpCost;
             this.spCost = spCost;
-            this.damageScaling = damageScaling;
-            this.magicDamageScaling = magicDamageScaling;
 	    this.isEnemyTargeted = isEnemyTargeted;
         }
 
         public abstract void UseSkill(Entity target, Entity user);
     }
 
+
+    internal class BuffSkill : Skill {
+	public Buff referenceBuff;
+
+	public BuffSkill(
+	    string skillName,
+	    string skillDescription,
+	    int mpCost,
+	    int spCost,
+	    Buff buff,
+	    bool isEnemyTargeted
+	) : base(skillName, skillDescription, mpCost, spCost, isEnemyTargeted) {
+	    this.referenceBuff = buff;
+	}
+
+        public override void UseSkill(Entity target, Entity user) {
+	    target.ApplyBuff(
+		new Buff(
+		    this.referenceBuff.bufName,
+		    user.entityName,
+		    this.referenceBuff.targetStat,
+		    this.referenceBuff.buffAmount,
+		    this.referenceBuff.buffPercent,
+		    this.referenceBuff.maxBuffDuration
+		)
+	    );
+	}
+    }
+
     internal class BasicSkill : Skill
     {
-        public BasicSkill(string skillName,
+        public int damageScaling;
+        public int magicDamageScaling;
+
+        public BasicSkill(
+	    string skillName,
 	    string skillDescription,
 	    int mpCost,
 	    int spCost,
 	    int damageScaling,
 	    int magicDamageScaling
-        ) : base(skillName, skillDescription, mpCost, spCost, damageScaling, magicDamageScaling, true) { }
+        ) : base(skillName, skillDescription, mpCost, spCost, true) {
+            this.damageScaling = damageScaling;
+            this.magicDamageScaling = magicDamageScaling;
+	}
 
         public override void UseSkill(Entity target, Entity user)
         {
@@ -79,6 +109,8 @@ namespace Basic_Rpg
 
     internal class HealSkill : Skill
     {
+        public int damageScaling;
+        public int magicDamageScaling;
         public double healthPercentage;
         
         public HealSkill(
@@ -89,13 +121,15 @@ namespace Basic_Rpg
             int damageScaling,
             int magicDamageScaling,
             double healthPercentage
-        ) : base(skillName, skillDescription, mpCost, spCost, damageScaling, magicDamageScaling, false) {
+        ) : base(skillName, skillDescription, mpCost, spCost, false) {
 	    if (damageScaling != 0 && magicDamageScaling != 0) {
 		throw new ArgumentException(
 		    "Tried to create a HealSkill with both magic and ordinary damage scaling"
 		);
 	    }
 	    
+            this.damageScaling = damageScaling;
+            this.magicDamageScaling = magicDamageScaling;
             this.healthPercentage = healthPercentage;
         }
 
