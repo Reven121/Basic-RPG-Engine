@@ -59,6 +59,8 @@ namespace Basic_Rpg
 		    this.referenceBuff.maxBuffDuration
 		)
 	    );
+            user.currentSP = user.currentSP - spCost;
+            user.currentMP = user.currentMP - mpCost;
 	}
     }
 
