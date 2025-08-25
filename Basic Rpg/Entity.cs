@@ -173,36 +173,76 @@ namespace Basic_Rpg {
         }
 
         public void ModifyAttack(int change) {
-            stats.attack += change;
+            this.stats.attack += change;
 
             if (change < 0) {
                 change  = 0;
             }
         }
+
+
+        public void ApplyBuff(Buff newBuff) {
+	    this.stats.ApplyBuff(newBuff);
+	}
     }
 
 
     public class EntityStats {
         public enum EntityStat {
-
             MaxHealthPoints,
             Attack,
-            MaigcAttack,
+            MagicAttack,
             Defence,
             MagicDefence,
             Speed,
             MaxMP,
             MaxSP
         }
-        public int maxHealthPoints;
-        public int attack;
-        public int magicAttack;
-        public int defence;
-        public int magicDefence;
-        public int speed;
-        public int maxMP;
-        public int maxSP;
+
+	// private base stats
+        private int _maxHealthPoints;
+        private int _attack;
+        private int _magicAttack;
+        private int _defence;
+        private int _magicDefence;
+        private int _speed;
+        private int _maxMP;
+        private int _maxSP;
         private List<Buff> buffs = [];
+
+	// public geters that return computed stats
+        public int maxHealthPoints {
+	    get => this.ComputeBuffedStat(EntityStat.MaxHealthPoints);
+	    set => this._maxHealthPoints = value;
+	}
+        public int attack {
+	    get => this.ComputeBuffedStat(EntityStat.Attack);
+	    set => this._attack = value;
+	}
+        public int magicAttack {
+	    get => this.ComputeBuffedStat(EntityStat.MagicAttack);
+	    set => this._magicAttack = value;
+	}
+        public int defence {
+	    get => this.ComputeBuffedStat(EntityStat.Defence);
+	    set => this._defence = value;
+	}
+        public int magicDefence {
+	    get => this.ComputeBuffedStat(EntityStat.MagicDefence);
+	    set => this._magicDefence = value;
+	}
+        public int speed {
+	    get => this.ComputeBuffedStat(EntityStat.Speed);
+	    set => this._speed = value;
+	}
+        public int maxMP {
+	    get => this.ComputeBuffedStat(EntityStat.MaxMP);
+	    set => this._maxMP = value;
+	}
+        public int maxSP {
+	    get => this.ComputeBuffedStat(EntityStat.MaxSP);
+	    set => this._maxSP = value;
+	}
 
         public EntityStats(
 	    int maxHealthPoints,
@@ -214,18 +254,18 @@ namespace Basic_Rpg {
 	    int maxMP,
 	    int maxSP
 	) {
-            this.maxHealthPoints = maxHealthPoints;
-            this.attack = attack;
-            this.magicAttack = magicAttack;
-            this.defence = defence;
-            this.magicDefence = magicDefence;
-            this.speed = speed;
-            this.maxMP = maxMP;
-            this.maxSP = maxSP;
+            this._maxHealthPoints = maxHealthPoints;
+            this._attack = attack;
+            this._magicAttack = magicAttack;
+            this._defence = defence;
+            this._magicDefence = magicDefence;
+            this._speed = speed;
+            this._maxMP = maxMP;
+            this._maxSP = maxSP;
         }
 
         public void ApplyBuff(Buff newBuff) {
-            foreach (Buff buff in buffs) {
+            foreach (Buff buff in this.buffs) {
                 if (buff == newBuff) {
                     buff.ResetBuffDuration();
                     return;
@@ -237,7 +277,7 @@ namespace Basic_Rpg {
 
         // Must be called once at the start of each turn
         public void UpdateBuffs() {
-            foreach (Buff buff in buffs) {
+            foreach (Buff buff in this.buffs) {
                 buff.DecrementBuffDuration();
                 if (buff.HasBuffExpired()) {
                     this.buffs.Remove(buff);
@@ -248,7 +288,7 @@ namespace Basic_Rpg {
         private int ComputeBuffedStat(EntityStat stat) {
             int baseStatValue = this.GetBaseStatValue(stat);
 	    int buffedStatValue = baseStatValue;
-            foreach (Buff buff in buffs) {
+            foreach (Buff buff in this.buffs) {
 		buffedStatValue += buff.ComputeBuffAmmount(baseStatValue);
             }
             return buffedStatValue;
@@ -257,21 +297,21 @@ namespace Basic_Rpg {
         private int GetBaseStatValue(EntityStat stat) {
             switch (stat) {
                 case EntityStat.MaxHealthPoints:
-                    return this.maxHealthPoints;
+                    return this._maxHealthPoints;
                 case EntityStat.Attack:
-                    return this.attack;
-                case EntityStat.MaigcAttack:
-                    return this.magicAttack;
+                    return this._attack;
+                case EntityStat.MagicAttack:
+                    return this._magicAttack;
                 case EntityStat.Defence:
-                    return this.defence;
+                    return this._defence;
                 case EntityStat.MagicDefence:
-                    return this.magicDefence;
+                    return this._magicDefence;
                 case EntityStat.Speed:
-                    return this.speed;
+                    return this._speed;
                 case EntityStat.MaxMP:
-                    return this.maxMP;
+                    return this._maxMP;
                 case EntityStat.MaxSP:
-                    return this.maxSP;
+                    return this._maxSP;
 		default:
                     Console.Error.WriteLine($"Got an invalid EntityStat value: {stat}");
                     return 0;
@@ -280,13 +320,13 @@ namespace Basic_Rpg {
     }
 
     public class Buff {
-        private string bufName;
-        private string bufSourceEntityName;
-        private EntityStats.EntityStat targetStat;
-        private int buffAmount;
-        private double buffPercent;
-        private int buffDurationRemaining;
-        private int maxBuffDuration;
+        public string bufName;
+        public string bufSourceEntityName;
+        public EntityStats.EntityStat targetStat;
+        public int buffAmount;
+        public double buffPercent;
+        public int buffDurationRemaining;
+        public int maxBuffDuration;
 
         public Buff(
             string bufName,
